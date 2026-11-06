@@ -1,8 +1,10 @@
+name: aegis-dev
+
 services:
   db:
     image: mysql:8.0
-    container_name: tcc_mysql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: sec-app_db
@@ -14,7 +16,6 @@ services:
       - mysql_data:/var/lib/mysql
 
   app:
-    container_name: tcc_app
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -27,6 +28,7 @@ services:
       DATABASE_PASSWORD: user_password
       DATABASE_NAME: sec-app_db
       DATABASE_URL: mysql://user:user_password@db:3306/sec-app_db
+      JWT_SECRET: ${JWT_SECRET}
     volumes:
       - .:/app
       - /app/node_modules

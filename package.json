@@ -10,23 +10,29 @@
     "start": "next start",
     "lint": "eslint",
     "type-check": "tsc --noEmit",
+    "security:audit": "npm audit --audit-level=high",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:unit": "jest --ci --selectProjects unit",
     "test:coverage": "jest --ci --coverage --selectProjects unit",
-    "test:integration": "jest --ci --selectProjects integration",
+    "test:integration": "jest --ci --selectProjects integration --runInBand",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.10.0",
     "@prisma/client": "^7.10.0",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.4.2",
     "jose": "^6.2.12",
-    "next": "16.3.1",
+    "next": "^16.4.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
@@ -43,6 +49,7 @@
     "prisma": "^7.10.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
   "allowScripts": {

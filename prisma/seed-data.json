@@ -1,0 +1,1882 @@
+{
+  "tracks": [
+    {
+      "theme": "Princípios de Design Seguro",
+      "description": "Aprenda a incorporar segurança desde o design, modelar ameaças e aplicar princípios defensivos.",
+      "lessons": [
+        {
+          "title": "Lição 1 — O Paradigma Security by Design e o Processo Proativo de Desenvolvimento Seguro",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Imagine descobrir que a fechadura da sua casa é frágil só depois de um assalto. Parece óbvio que o ideal seria ter verificado a fechadura antes de morar lá — mas é exatamente assim que boa parte do software é construído: a segurança entra em cena só no final, como um teste de penetração de última hora antes do lançamento.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "O problema da segurança reativa",
+              "body": "Durante décadas, segurança foi tratada como uma etapa de validação — algo que se testava depois que o sistema já estava pronto, como um “remendo” aplicado no fim da linha de produção. O problema é estrutural: se uma falha está na arquitetura (por exemplo, um sistema que não separa permissões de usuário comum e administrador), nenhum teste de última hora resolve isso sem redesenhar partes inteiras do sistema.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Security by Design e o processo proativo",
+              "body": "O paradigma Security by Design inverte essa lógica: segurança entra desde a fase de design, antes de qualquer linha de código ser escrita. Para colocar essa ideia em prática, o livro de Howard e LeBlanc (capítulo 2, “O Processo Proativo de Desenvolvimento Seguro”) propõe um processo proativo: em vez de esperar os problemas aparecerem, cada etapa do desenvolvimento tem um “portão” de verificação de segurança. Não é só a equipe de testes que pensa nisso, é toda a esteira, desde quem desenha o modelo de dados até quem escreve o código.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Por que corrigir cedo é mais barato",
+              "body": "A razão disso ser tão valorizado é simples: corrigir uma falha de design é uma conversa e um ajuste de diagrama; corrigir a mesma falha depois que o sistema já está em produção, com usuários reais e dados reais, pode significar reescrever módulos inteiros, migrar dados e lidar com o dano já causado.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "SD3: os três pilares",
+              "body": "Howard e LeBlanc estruturam o processo proativo em três pilares complementares, conhecidos como SD3: Secure by Design, Secure by Default e Secure in Deployment.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Security by Design × Secure by Design",
+              "body": "Uma confusão que pode ocorrer é a relação entre o termo Security by Design, que é o nome do paradigma inteiro (a ideia geral de pensar segurança desde o projeto) e o Secure by Design, que é apenas o primeiro dos três pilares do SD3, e trata do produto em si (projeto e código). Os nomes são parecidos, mas o paradigma é o todo e o pilar é uma de suas partes.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Pilar 1: Secure by Design",
+              "body": "Secure by Design (o primeiro pilar) significa que o produto nasce sólido, não é “consertado” depois. Na prática: alguém precisa ser o responsável formal por aprovar (ou barrar) a segurança do produto antes do lançamento; times não seguem checklists de segurança “quando dá tempo” — eles seguem sempre, e corrigem qualquer desvio rapidamente, porque um atacante não liga se a vulnerabilidade está em código novo ou antigo; e a modelagem de ameaças (Lição 2 desta trilha) precisa estar pronta durante o design, não depois.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Pilar 2: Secure by Default",
+              "body": "Secure by Default significa que, assim que o produto sai de fábrica, ele já é seguro sem precisar de configuração extra: não instalar funcionalidades que a maioria dos usuários não usa, aplicar o mínimo de privilégio possível por padrão, e proteger dados sensíveis desde o primeiro boot.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Pilar 3: Secure in Deployment",
+              "body": "Secure in Deployment reconhece que um sistema bem projetado ainda pode ficar inseguro se for difícil de administrar depois de instalado: o time precisa saber em que versão/patch o sistema está, correções de vulnerabilidade devem ser rápidas, mas corretas (uma correção apressada pode introduzir um bug novo), e o usuário final precisa de orientação clara sobre como operar o sistema com segurança.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Shift-Left (fora do livro)",
+              "body": "Sobre Shift-Left, é possível encontrar, em artigos e no mercado, a presença desse termo. Ele não vem do livro de Howard e LeBlanc: é um termo de outra origem, que nasceu no contexto de testes de software e depois foi adotado por práticas como o DevSecOps. A ideia é parecida com a do paradigma: imagine o ciclo de desenvolvimento como uma linha do tempo da esquerda para a direita (planejamento → design → código → testes → produção); “deslocar para a esquerda” significa mover as verificações de segurança para as etapas mais iniciais possíveis, em vez de empurrá-las para o fim.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "Segurança reativa = corrigir depois que já é tarde.\n\nShift-Left = mover as verificações de segurança para o início do processo, não para o fim.\n\nQuanto mais cedo uma falha é encontrada, mais barato é corrigi-la.\n\nSecure by Design: segurança aprovada e modelada desde o design, não testada só no fim.\n\nSecure by Default: o produto já nasce seguro, sem exigir configuração extra do usuário.\n\nSecure in Deployment: um sistema seguro também precisa ser administrável e corrigível com segurança depois de implantado.\n\nOs três pilares juntos formam o SD3 — a base do processo proativo do livro “Writing Secure Code 2° Edição” de Howard e LeBlanc.",
+              "source": "Para aprofundar seus conhecimentos no Security By Design, pode-se começar a leitura a partir do capítulo 3: “Security Principles to Live By”, porém a leitura integral dos capítulos 1 e 2 é interessante para se aprofundar em saber sobre como esses princípios se relacionam com o processo de desenvolvimento de software seguro."
+            }
+          ]
+        },
+        {
+          "title": "Lição 2 — Modelo de Ameaças",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Você não pode construir um sistema seguro até compreender as ameaças que o cercam. Assim como um arquiteto avalia os riscos de incêndio ou desabamento antes de construir um prédio, um engenheiro de software precisa mapear como um invasor pode comprometer a aplicação. A Modelagem de Ameaças (Threat Modeling) fornece uma forma estruturada de descobrir vulnerabilidades de design antes mesmo da primeira linha de código ser escrita, sendo responsável por revelar falhas complexas que dificilmente seriam encontradas apenas em testes tradicionais.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Estrutura para a segurança no design",
+              "body": "O desenvolvimento de software tradicional muitas vezes lida com a segurança de forma caótica. A modelagem de ameaças traz estrutura para a fase de design, forçando a equipe a pensar formalmente sobre a segurança da aplicação, entender onde o produto é mais vulnerável e escolher técnicas apropriadas para mitigar esses riscos. De acordo com a experiência relatada na Microsoft, cerca de 50% dos bugs de segurança são encontrados através dessa análise crítica do design (Howard; LeBlanc, 2002).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Decomposição da aplicação (DFD)",
+              "body": "Para que a modelagem não seja apenas um exercício de \"adivinhação aleatória\", o processo começa com a Decomposição da Aplicação. Utiliza-se Diagramas de Fluxo de Dados (DFDs) para mapear os processos, o armazenamento de dados, os atores externos (interactors) e os limites de confiança do sistema. Um limite de confiança é o ponto onde os dados passam de uma zona menos confiável para uma mais confiável (por exemplo, da internet para o seu servidor). É nesses pontos que os dados precisam ser verificados, e por isso eles merecem atenção especial na análise. Você avalia os componentes do sistema e como os dados fluem entre eles.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "STRIDE: categorizando ameaças",
+              "body": "Com os alvos mapeados, utiliza-se a sigla STRIDE para categorizar e fazer perguntas pontuais sobre as ameaças de cada componente:",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Spoofing: falsificação de identidade",
+              "body": "Spoofing (Falsificação de Identidade): Permite que um invasor se passe por outro usuário (ex: usando um usuário e senha interceptados) ou que um servidor malicioso se passe por um servidor válido (ex: DNS spoofing).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Tampering: adulteração de dados",
+              "body": "Tampering (Adulteração de Dados): Modificação maliciosa de dados, como alterar registros em um banco de dados de forma não autorizada ou corromper dados enquanto trafegam em uma rede aberta.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Repudiation: repúdio",
+              "body": "Repudiation (Repúdio): Ameaças associadas a usuários que negam ter realizado uma ação (ex: uma compra) e o sistema não tem como provar o contrário. Aplicações de e-commerce precisam de mecanismos fortes de não-repúdio (ex: recibos assinados).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Information Disclosure: divulgação de informação",
+              "body": "Information Disclosure (Divulgação de Informação): Exposição de informações confidenciais a pessoas sem acesso autorizado. Um exemplo clássico é um intruso utilizando um sniffer para ler dados transitando entre dois computadores.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Denial of Service: negação de serviço",
+              "body": "Denial of Service (Negação de Serviço - DoS): Tornar o sistema temporariamente indisponível ou inutilizável para usuários válidos. É uma ameaça fácil de ser alcançada e frequentemente anônima, como consumir toda a CPU de um servidor Web e impedir vendas legítimas.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Elevation of Privilege: elevação de privilégio",
+              "body": "Elevation of Privilege (Elevação de Privilégio): Um usuário sem privilégios ganha acesso privilegiado (ex: administrador ou root), obtendo acesso suficiente para comprometer ou destruir todo o sistema. Esta é a pior das ameaças; se alguém se torna administrador, todas as outras ameaças se tornam realidade.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Depois do STRIDE: priorizar e mitigar",
+              "body": "Identificar as ameaças é apenas parte do trabalho. Em seguida, a equipe prioriza o que foi encontrado, tratando primeiro as ameaças mais graves e mais prováveis, e mitiga cada uma delas, isto é, escolhe e aplica uma defesa que a elimine ou reduza (por exemplo, exigir autenticação forte contra o Spoofing ou registrar logs contra o Repudiation). O resultado da modelagem de ameaças é essa lista de riscos já com a resposta definida para cada um, e não apenas um catálogo de problemas",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "É impossível projetar uma defesa eficaz sem antes compreender as ameaças ao sistema.\n\nA Modelagem de Ameaças encontra bugs de design e falhas de múltiplos passos muito antes da fase de codificação e testes.\n\nO processo exige decompor a aplicação usando Diagramas de Fluxo de Dados (DFDs) para entender os limites de confiança.\n\nO STRIDE é utilizado para categorizar as ameaças aos componentes: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service e Elevation of Privilege.\n\nDepois de identificar as ameaças, o processo continua: elas são priorizadas e cada uma recebe uma mitigação.\n\nA Elevação de Privilégio é considerada a pior categoria de ameaça, pois concede controle total sobre as defesas do sistema.",
+              "source": "No Capítulo 4 (\"Threat Modeling\") do livro Writing Secure Code, leia como a equipe utiliza as \"Threat Trees\" (Árvores de Ameaças). Estude como aplicar o STRIDE aos diagramas Diagrama de Fluxo de Dados (DFD) e como mapear os cenários que transformam uma ameaça teórica em uma vulnerabilidade técnica real usando essas árvores."
+            }
+          ]
+        },
+        {
+          "title": "Lição 3 — Defesa em Profundidade e Princípio do Menor Privilégio",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Para cortar um cano de plástico pequeno, você pode usar um serrote manual ou uma motosserra. Ambos fazem o trabalho, mas a motosserra é um exagero perigoso: se você cometer um erro, ela destruirá o cano e tudo ao redor. No desenvolvimento de software, executar um código comum com privilégios administrativos é o equivalente a usar a motosserra. Além disso, a segurança de um sistema não pode depender de uma única barreira mágica. Se a porta do banco for arrombada, os cofres ainda precisam estar trancados.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Defesa em Profundidade",
+              "body": "Muitos sistemas de software são projetados de uma forma que leva ao comprometimento total se o firewall for violado. O princípio da Defesa em Profundidade (Defense in Depth) dita que você deve construir sua aplicação como se ela fosse o último componente de pé e todos os outros mecanismos de defesa já tivessem sido destruídos. Assim como um banco possui guardas na entrada, portas com retardo de tempo, câmeras, separação de funções e cofres de metal espesso, seu software não deve confiar em apenas um sistema externo de proteção. A aplicação precisa se defender sozinha, porque o software falha, o hardware falha e as pessoas falham (quem constrói os sistemas são pessoas).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Princípio do Menor Privilégio",
+              "body": "Junto a isso, atua o princípio do Menor Privilégio (Least Privilege), que estabelece que toda aplicação deve ser executada com o menor nível de privilégio necessário para realizar a sua tarefa, e nada mais. O motivo é simples: se uma vulnerabilidade for encontrada e um invasor injetar um código malicioso no seu processo, esse código rodará com os mesmos privilégios do processo que foi comprometido. Se o processo estiver rodando com uma conta administrativa, o invasor ganha controle total da máquina. Isso vale para qualquer ambiente: a conta SYSTEM ou Administrator no Windows, o usuário root (ou um processo com acesso a sudo) no Linux, ou a conta administrativa do banco de dados (como root no MySQL ou sa no SQL Server) em uma aplicação web.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Ataques históricos e privilégios elevados",
+              "body": "Historicamente, ataques infames da Internet do início dos anos 2000, como as desfigurações de servidores Web (Web server defacements) e a propagação de vírus e cavalos de troia (como o ILoveYou, Back Orifice e SubSeven), teriam falhado ou causado danos muito menores se os usuários ou os serviços afetados não estivessem operando com contas de privilégio elevado.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "O mesmo erro nos dias de hoje",
+              "body": "O mesmo erro continua acontecendo hoje, só que em outros lugares. Exemplos atuais são:",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Exemplo: container rodando como root",
+              "body": "um container rodando como root, em que uma falha na aplicação pode dar ao invasor acesso privilegiado ao ambiente;",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Exemplo: banco acessado como root ou sa",
+              "body": "uma aplicação web que se conecta ao banco com a conta root ou sa, em que uma única SQL Injection permite apagar tabelas ou ler o banco inteiro;",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Exemplo: permissões de IAM amplas demais",
+              "body": "permissões de IAM amplas demais na nuvem (como AdministratorAccess ou *:* para uma função que só precisa ler um bucket), em que a credencial vazada de um serviço dá acesso a toda a conta.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "O princípio por trás dos exemplos",
+              "body": "Em todos os casos, o princípio é o mesmo: se aquele componente for comprometido, o estrago fica limitado ao que ele podia fazer.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Separação de Privilégios",
+              "body": "Para potencializar essa proteção, utiliza-se também a Separação de Privilégios. Isso significa isolar as operações que realmente exigem privilégios altos em um processo separado, enquanto a maior parte da aplicação (como as interfaces de usuário ou tratamento de requisições Web) roda em processos com capacidades restritas. Se o privilégio elevado for inevitável, ele deve ser usado pelo menor tempo possível e desabilitado imediatamente após a tarefa, minimizando a janela de exposição ao risco.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "A Defesa em Profundidade exige que a aplicação saiba se defender sozinha, assumindo que as barreiras externas (como firewalls) podem e vão falhar.\n\nHardware, software e pessoas são falhos; portanto, múltiplas camadas independentes de segurança são obrigatórias para evitar um ponto único de falha.\n\nO Menor Privilégio dita que uma aplicação nunca deve rodar com capacidades além daquelas estritamente necessárias para a sua função.\n\nSe um processo for comprometido, o atacante herda os privilégios dele. Logo, forçar o software a rodar como administrador é convidar o desastre.\n\nO princípio vale em qualquer ambiente: root no Linux, conta administrativa do banco, container rodando como root ou permissões de IAM amplas demais na nuvem.\n\nQuando privilégios altos são necessários, eles devem ser isolados em processos separados (Separação de Privilégios) e ativados pelo menor tempo possível.",
+              "source": "No Capítulo 3 (\"Security Principles to Live By\"), leia as seções dedicadas a \"Use Defense in Depth\", \"Use Least Privilege\" e \"Separation of Privilege\" para solidificar a base teórica. Em seguida, avance para o início do Capítulo 7 (\"Running with Least Privilege\") para ver casos reais de como malwares e atacantes se aproveitam de softwares que ignoram essa regra, além de aprender como reduzir as exigências de privilégio do seu próprio código."
+            }
+          ]
+        },
+        {
+          "title": "Lição 4 — Falha Segura (Fail Securely)",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Planejar a segurança de um software acreditando que \"ele nunca vai falhar\" é o mesmo que construir um prédio sem saídas de emergência com a esperança de que ele nunca pegue fogo. Sistemas quebram, bugs acontecem e o hardware falha. Se você não projetar como a sua aplicação deve se comportar no exato momento em que ela quebra, um atacante astuto irá forçar um erro deliberadamente (como esgotar a memória do servidor) apenas para derrubar os mecanismos de segurança e invadir o sistema.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Planeje a falha",
+              "body": "Existe um velho ditado de que as únicas certezas da vida são a morte e os impostos. Os autores do livro acrescentam uma terceira: a falha dos computadores. Como ela é inevitável, você deve planejar a falha (Plan on Failure).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Modo seguro em caso de falha",
+              "body": "Falhar para um modo seguro (Fail to a Secure Mode) significa que o aplicativo bloqueia operações e não divulga dados confidenciais após o erro. Por outro lado, um sistema que falha de maneira insegura abre brechas quando encontra um problema não mapeado.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Retornos e exceções na lógica de código",
+              "body": "Na lógica de programação, isso se traduz em como você lida com retornos e exceções. Um erro clássico é escrever uma verificação de segurança que só bloqueia o usuário se o sistema retornar explicitamente ACESSO_NEGADO. Mas o que acontece se o banco de dados cair ou a memória acabar bem no meio da verificação? A função pode retornar um erro genérico como FALTA_DE_MEMORIA. Se o seu código não tratar essa exceção corretamente, ele pode interpretar que, como não foi \"acesso negado\", o usuário está liberado para passar! O correto é inverter a lógica: o acesso só deve ser permitido se o sistema retornar exatamente um código de sucesso ou permissão. Qualquer outro erro, por menor que seja, deve resultar em acesso bloqueado.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Negação por padrão (default deny)",
+              "body": "O mesmo princípio se aplica a firewalls e validação de entrada. Um firewall seguro não tenta bloquear pacotes \"ruins\"; ele é configurado para permitir apenas pacotes explicitamente \"bons\" e rejeitar todo o resto por padrão.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Erros sem expor detalhes técnicos",
+              "body": "Além disso, quando o sistema falhar, ele não deve exibir grandes blocos de informações técnicas e rastreamento de pilha (stack traces) na tela. Forneça ao usuário apenas informações suficientes para que ele saiba que a solicitação falhou, e grave os detalhes sensíveis de forma silenciosa e segura em arquivos de log do sistema.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "A falha de sistemas é inevitável (como dizem os autores, assim como a morte e os impostos): é preciso planejar o que o sistema fará quando ela ocorrer.\n\nQuando o sistema enfrentar um erro imprevisto, o estado padrão deve ser a negação e o bloqueio da operação (Falha Segura).\n\nValidações de segurança só devem permitir o acesso sob a confirmação estrita de sucesso. Se a checagem falhar por falta de infraestrutura, o acesso deve ser recusado.\n\nA negação por padrão (default deny) é a única abordagem confiável, seja em firewalls, validação de dados ou controle de acesso.\n\nDetalhes técnicos sobre os erros da aplicação devem ser ocultados do usuário final e registrados apenas em logs seguros.",
+              "source": "No final do Capítulo 3 (\"Security Principles to Live By\"), leia as seções \"Plan on Failure\" e \"Fail to a Secure Mode\" para compreender, na prática, como uma checagem de privilégios (IsAccessAllowed) pode comprometer o sistema se for mal implementada no código. Aproveite para visualizar como esse conceito se conecta à sanitização de dados e whitelists mencionados brevemente lá, tema que é aprofundado no Capítulo 10 (\"All Input Is Evil!\")."
+            }
+          ]
+        }
+      ],
+      "revisionExercises": [
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O que significa \"Shift-Left\" na segurança de software?",
+            "options": [
+              "Fazer os testes de segurança somente depois do lançamento do produto",
+              "Contratar uma equipe de testes maior para o fim do projeto",
+              "Mover as verificações de segurança para as etapas mais iniciais do desenvolvimento",
+              "Trocar a linguagem de programação por uma mais segura"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Shift-Left vem da ideia de imaginar o desenvolvimento como uma linha do tempo da esquerda para a direita. \"Deslocar para a esquerda\" é levar as verificações de segurança para o início do processo (planejamento e design), e não deixá-las para o fim."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: corrigir uma falha de design costuma ser mais barato quando ela é encontrada cedo, ainda na fase de design.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Corrigir uma falha na fase de design é uma conversa e um ajuste de diagrama. Depois que o sistema está em produção, pode significar reescrever módulos inteiros e migrar dados."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Quais são os três pilares do SD3, apresentados por Howard e LeBlanc?",
+            "options": [
+              "Detectar, Defender e Documentar",
+              "Secure by Design, Secure by Default e Secure in Deployment",
+              "Design, Desenvolvimento e Distribuição",
+              "Seguro na Rede, Seguro no Banco e Seguro na Interface"
+            ],
+            "correctAnswer": 1,
+            "explanation": "O SD3 reúne Secure by Design (o produto nasce sólido), Secure by Default (já sai seguro, sem configuração extra) e Secure in Deployment (é administrável e corrigível com segurança depois de implantado)."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Um produto que já sai de fábrica seguro, sem exigir configuração extra do usuário (por exemplo, com funcionalidades pouco usadas desativadas), segue qual pilar do SD3?",
+            "options": [
+              "Secure in Deployment",
+              "Secure by Design",
+              "Shift-Left",
+              "Secure by Default"
+            ],
+            "correctAnswer": 3,
+            "explanation": "Secure by Default significa que o produto já nasce seguro: não instala funcionalidades que a maioria dos usuários não usa, aplica o mínimo de privilégio por padrão e protege dados sensíveis desde o primeiro boot."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque as etapas do ciclo de desenvolvimento na ordem da linha do tempo, da esquerda para a direita, como no Shift-Left.",
+            "options": [
+              "Código",
+              "Produção",
+              "Planejamento",
+              "Testes",
+              "Design"
+            ],
+            "correctAnswer": [
+              "Planejamento",
+              "Design",
+              "Código",
+              "Testes",
+              "Produção"
+            ],
+            "explanation": "A ordem da linha do tempo é: Planejamento, Design, Código, Testes e Produção. O Shift-Left leva as verificações de segurança para as primeiras etapas dessa linha, e não para o fim."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Qual é o principal objetivo da modelagem de ameaças (Threat Modeling)?",
+            "options": [
+              "Corrigir os bugs de código depois do lançamento",
+              "Substituir completamente os testes tradicionais",
+              "Documentar o código-fonte da aplicação",
+              "Descobrir como um invasor pode comprometer a aplicação, ainda na fase de design"
+            ],
+            "correctAnswer": 3,
+            "explanation": "A modelagem de ameaças dá estrutura à fase de design: a equipe pensa formalmente em como a aplicação pode ser atacada e escolhe como mitigar os riscos, antes de a primeira linha de código ser escrita."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: a sigla ______ é usada para categorizar as ameaças em Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service e Elevation of Privilege.",
+            "options": [],
+            "correctAnswer": "STRIDE",
+            "explanation": "A resposta é STRIDE. Cada letra da sigla representa uma categoria de ameaça, e ela serve para fazer perguntas pontuais sobre cada componente do sistema."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Um invasor usa o usuário e a senha interceptados de outra pessoa para entrar no sistema. Em qual categoria do STRIDE essa ameaça se encaixa?",
+            "options": [
+              "Tampering (Adulteração de Dados)",
+              "Denial of Service (Negação de Serviço)",
+              "Spoofing (Falsificação de Identidade)",
+              "Information Disclosure (Divulgação de Informação)"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Spoofing é quando o invasor se passa por outro usuário, por exemplo usando um usuário e uma senha interceptados."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: a Elevação de Privilégio é considerada a pior categoria de ameaça, porque, se alguém se torna administrador, todas as outras ameaças se tornam realidade.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Quem consegue privilégio de administrador (ou root) tem acesso suficiente para comprometer ou destruir todo o sistema, e por isso essa é a pior das ameaças do STRIDE."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Na decomposição da aplicação, qual recurso é usado para mapear os processos, o armazenamento de dados, os atores externos e os limites de confiança?",
+            "options": [
+              "Planilhas de custos",
+              "Diagramas de Fluxo de Dados (DFDs)",
+              "Testes de carga",
+              "Logs do servidor"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Os Diagramas de Fluxo de Dados (DFDs) mostram os componentes do sistema e como os dados fluem entre eles, o que permite aplicar o STRIDE a cada alvo mapeado."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O que a Defesa em Profundidade (Defense in Depth) orienta?",
+            "options": [
+              "Confiar no firewall como única proteção da aplicação",
+              "Construir a aplicação como se as outras defesas, como o firewall, já tivessem falhado",
+              "Proteger apenas os dados mais importantes do banco",
+              "Remover todas as barreiras de segurança para simplificar o sistema"
+            ],
+            "correctAnswer": 1,
+            "explanation": "A Defesa em Profundidade dita que a aplicação deve saber se defender sozinha, como se fosse o último componente de pé. O software falha, o hardware falha e as pessoas falham, então é preciso ter várias camadas de proteção."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O Princípio do Menor Privilégio diz que uma aplicação deve ser executada com:",
+            "options": [
+              "Privilégios de administrador, para evitar erros de permissão",
+              "Os mesmos privilégios do usuário mais antigo do sistema",
+              "Apenas o nível de privilégio necessário para realizar a sua tarefa",
+              "Privilégios máximos, desde que haja um firewall"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Toda aplicação deve rodar com o menor nível de privilégio necessário para a sua tarefa, e nada mais. Assim, se ela for comprometida, o estrago fica limitado."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: se um invasor injeta código malicioso em um processo, esse código roda com privilégios menores do que os do processo comprometido.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "É o contrário: o código malicioso roda com os mesmos privilégios do processo comprometido. Se o processo roda como administrador, o invasor ganha controle total da máquina."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: quando um privilégio elevado é inevitável, ele deve ser usado pelo menor ______ possível e desabilitado logo após a tarefa.",
+            "options": [],
+            "correctAnswer": "tempo",
+            "explanation": "A resposta é tempo. Usar o privilégio elevado pelo menor tempo possível reduz a janela de exposição ao risco."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Em que consiste a Separação de Privilégios?",
+            "options": [
+              "Isolar as operações que exigem privilégios altos em um processo separado, deixando o restante da aplicação com capacidades restritas",
+              "Dar a cada usuário uma senha diferente para cada tela",
+              "Executar todas as operações da aplicação em um único processo, para facilitar a manutenção",
+              "Separar o banco de dados em vários servidores"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Na Separação de Privilégios, só a parte que realmente precisa de privilégios altos roda em um processo separado. A interface e o tratamento de requisições Web, por exemplo, ficam em processos com capacidades restritas."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O que significa \"falhar de forma segura\" (Fail Securely)?",
+            "options": [
+              "Reiniciar o sistema automaticamente a cada erro",
+              "Mostrar ao usuário todos os detalhes técnicos do erro",
+              "Continuar a operação normalmente, ignorando o erro",
+              "Quando ocorre um erro, bloquear a operação e não divulgar dados confidenciais"
+            ],
+            "correctAnswer": 3,
+            "explanation": "Falhar para um modo seguro significa que, diante de um erro, o aplicativo bloqueia operações e não revela dados confidenciais, em vez de abrir brechas."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: se a verificação de permissão falhar por um erro inesperado, como falta de memória, o acesso deve ser liberado para não atrapalhar o usuário.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Qualquer erro, por menor que seja, deve resultar em acesso bloqueado. Um atacante pode forçar um erro de propósito justamente para tentar passar pela verificação."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Qual é a forma correta de escrever uma verificação de acesso?",
+            "options": [
+              "Bloquear o usuário somente se o sistema retornar explicitamente ACESSO_NEGADO",
+              "Liberar o acesso se nenhum erro aparecer na primeira tentativa",
+              "Permitir o acesso somente se o sistema retornar exatamente um código de sucesso, bloqueando qualquer outro resultado",
+              "Liberar o acesso por padrão e bloquear depois, se necessário"
+            ],
+            "correctAnswer": 2,
+            "explanation": "A lógica deve ser invertida: o acesso só é permitido com um código de sucesso. Se a verificação só bloqueasse em ACESSO_NEGADO, um erro como FALTA_DE_MEMORIA deixaria o usuário passar."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: em inglês, a regra de negar tudo o que não foi explicitamente permitido é chamada de default ______.",
+            "options": [],
+            "correctAnswer": "deny",
+            "explanation": "A resposta é deny (default deny, ou negação por padrão). É a abordagem confiável tanto em firewalls quanto na validação de dados e no controle de acesso."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O que o sistema deve mostrar ao usuário quando uma operação falha?",
+            "options": [
+              "O rastreamento de pilha (stack trace) completo, para facilitar o suporte",
+              "Apenas o suficiente para ele saber que a solicitação falhou, com os detalhes técnicos gravados em logs seguros",
+              "O nome das tabelas do banco e a consulta que falhou",
+              "Nenhuma mensagem, deixando a tela em branco"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Detalhes técnicos como stack traces ajudam um atacante. O usuário deve receber só a informação de que a solicitação falhou, e os detalhes ficam registrados de forma silenciosa nos logs do sistema."
+          }
+        ]
+      ],
+      "finalExercises": [
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Uma empresa decide que nenhum produto será lançado sem a aprovação formal de uma pessoa responsável pela segurança. Qual pilar do SD3 essa decisão reforça?",
+          "options": [
+            "Secure in Deployment",
+            "Secure by Design",
+            "Secure by Default",
+            "Defesa em Profundidade"
+          ],
+          "correctAnswer": 1,
+          "explanation": "No Secure by Design, o produto nasce sólido, e alguém precisa ser o responsável formal por aprovar (ou barrar) a segurança antes do lançamento. A segurança também deve ser seguida sempre pelos times, e não apenas quando sobra tempo."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Um sistema foi bem projetado, mas é difícil de administrar depois de instalado: ninguém sabe em que versão está e as correções demoram a chegar. Qual pilar do SD3 está sendo negligenciado?",
+          "options": [
+            "Secure by Default",
+            "Shift-Left",
+            "Secure by Design",
+            "Secure in Deployment"
+          ],
+          "correctAnswer": 3,
+          "explanation": "O Secure in Deployment reconhece que um sistema bem projetado ainda pode ficar inseguro se for difícil de administrar. O time precisa saber a versão e o patch do sistema, corrigir vulnerabilidades com rapidez e correção, e orientar o usuário final."
+        },
+        {
+          "questionType": "ordering",
+          "prompt": "Coloque as etapas da modelagem de ameaças na ordem em que acontecem.",
+          "options": [
+            "Categorizar as ameaças de cada componente com o STRIDE",
+            "Escolher técnicas para mitigar os riscos",
+            "Decompor a aplicação com Diagramas de Fluxo de Dados (DFDs)"
+          ],
+          "correctAnswer": [
+            "Decompor a aplicação com Diagramas de Fluxo de Dados (DFDs)",
+            "Categorizar as ameaças de cada componente com o STRIDE",
+            "Escolher técnicas para mitigar os riscos"
+          ],
+          "explanation": "O processo começa pela decomposição da aplicação em DFDs. Com os alvos mapeados, o STRIDE categoriza as ameaças de cada componente, e então a equipe escolhe as técnicas apropriadas para mitigar os riscos."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Um cliente nega ter feito uma compra e o sistema não tem como provar o contrário. Em qual categoria do STRIDE essa ameaça se encaixa?",
+          "options": [
+            "Repudiation (Repúdio)",
+            "Spoofing (Falsificação de Identidade)",
+            "Tampering (Adulteração de Dados)",
+            "Elevation of Privilege (Elevação de Privilégio)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Repúdio é a ameaça de um usuário negar que realizou uma ação sem que o sistema consiga provar o contrário. Por isso aplicações de e-commerce precisam de mecanismos fortes de não-repúdio, como recibos assinados."
+        },
+        {
+          "questionType": "true_false",
+          "prompt": "Verdadeiro ou falso: consumir toda a CPU de um servidor Web, mesmo sem roubar nenhum dado, é uma ameaça de Denial of Service, pois impede que usuários válidos usem o sistema.",
+          "options": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Denial of Service é tornar o sistema temporariamente indisponível ou inutilizável para usuários válidos. É uma ameaça fácil de ser alcançada e frequentemente anônima, e pode impedir, por exemplo, vendas legítimas."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Um programa comum é executado como administrador \"para evitar problemas de permissão\". O que acontece se um vírus explorar uma falha nesse programa?",
+          "options": [
+            "O vírus roda com privilégios de administrador e pode controlar toda a máquina",
+            "O vírus fica limitado, pois o programa é comum",
+            "O firewall impede automaticamente qualquer dano",
+            "O vírus só consegue apagar os arquivos do próprio programa"
+          ],
+          "correctAnswer": 0,
+          "explanation": "O código malicioso roda com os mesmos privilégios do processo comprometido. Por isso, ataques como ILoveYou, Back Orifice e SubSeven teriam causado danos muito menores se os usuários e serviços não estivessem operando com contas de privilégio elevado."
+        },
+        {
+          "questionType": "fill_in_the_blank",
+          "prompt": "Complete o nome em inglês do princípio: Defense in ______ (Defesa em Profundidade).",
+          "options": [],
+          "correctAnswer": "depth",
+          "explanation": "A resposta é depth (Defense in Depth). O princípio orienta a construir a aplicação com várias camadas independentes de proteção, sem depender de uma única barreira."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Analise o pseudocódigo abaixo, que decide se um usuário pode acessar uma área restrita:\n\nresultado = verificar_permissao(usuario)\nse (resultado == NEGADO) {\nbloquear_acesso()\n} senao {\nliberar_acesso()\n}\n\nSuponha que o banco de dados saiu do ar e a função verificar_permissao retornou ERRO_DE_CONEXAO. O que acontece, e qual é a correção?",
+          "options": [
+            "O acesso é bloqueado, pois qualquer erro bloqueia o usuário automaticamente",
+            "O acesso é liberado, o que é aceitável para não atrapalhar o usuário",
+            "O acesso é liberado, pois o erro cai no senao. O correto é liberar somente se o resultado for exatamente PERMITIDO e bloquear qualquer outro resultado",
+            "O código está seguro, pois o firewall trata o erro de conexão"
+          ],
+          "correctAnswer": 2,
+          "explanation": "O código só bloqueia quando o resultado é explicitamente NEGADO. Qualquer outro retorno, como ERRO_DE_CONEXAO, cai no senao e libera o acesso. Na falha segura, a lógica deve ser invertida: liberar somente com um código de sucesso (PERMITIDO) e bloquear todo o resto. Um atacante poderia provocar o erro de propósito para passar pela verificação."
+        },
+        {
+          "questionType": "true_false",
+          "prompt": "Verdadeiro ou falso: um firewall seguro tenta bloquear os pacotes \"ruins\" conhecidos e deixa passar todo o resto.",
+          "options": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "correctAnswer": 1,
+          "explanation": "É o contrário: um firewall seguro permite apenas pacotes explicitamente \"bons\" e rejeita todo o resto por padrão. É o default deny, a única abordagem confiável."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Qual par de princípio e ideia está correto?",
+          "options": [
+            "Shift-Left: aplicar o mínimo de privilégio por padrão",
+            "Menor Privilégio: levar as verificações de segurança para o fim do projeto",
+            "Defesa em Profundidade: depender de um único firewall",
+            "Falha Segura: diante de um erro, bloquear a operação"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Falha Segura é bloquear a operação diante de um erro. Shift-Left leva as verificações de segurança para o início do processo, o Menor Privilégio limita o que a aplicação pode fazer, e a Defesa em Profundidade usa várias camadas de proteção em vez de uma só."
+        }
+      ]
+    },
+    {
+      "theme": "Práticas com Uso de Código Gerado por IA",
+      "description": "Aprenda a usar assistentes de IA na programação com revisão humana, proteção de dados e controles DevSecOps.",
+      "lessons": [
+        {
+          "title": "Lição 1 — Pair Programming Híbrido (Desenvolvedor-IA): Dinâmica de Trabalho e Prevenção do Atalho Cognitivo",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "A adoção de assistentes de Inteligência Artificial como \"co-pilotos\" de programação alterou radicalmente a dinâmica de Pair Programming tradicional. No entanto, substituir um parceiro humano por um modelo probabilístico traz um risco silencioso: o desenvolvedor tende a delegar a resolução de problemas complexos à máquina e aceitar blocos inteiros de código para economizar tempo, reduzindo o engajamento cognitivo necessário para garantir a segurança. Saber conduzir a programação em pares com IA exige estabelecer limites claros entre automação de tarefas repetitivas e a tomada de decisão arquitetural.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Pair programming com IA e o atalho cognitivo",
+              "body": "A integração de ferramentas generativas como o GitHub Copilot redefiniu a programação em pares nas equipes ágeis. Em vez da interação entre dois engenheiros humanos, o Pair Programming passa a ser uma parceria entre o desenvolvedor (que atua como navegador/driver) e o agente conversacional de IA. Estudos indicam que essa abordagem acelera a escrita de código e a geração de rotinas de suporte. Contudo, a facilidade de aceitar sugestões em linha cria a tentação do \"atalho cognitivo\", no qual o desenvolvedor aceita fragmentos funcionais sem realizar a devida decomposição modular e a verificação de segurança.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Divisão de papéis e aceitação incremental",
+              "body": "Para mitigar esse risco no dia a dia, a prática segura de Pair Programming com IA estabelece a segregação de papéis: a IA deve ser empregada prioritariamente para acelerar tarefas repetitivas, estruturação de documentação e automação de testes unitários básicos. Em contrapartida, as decisões de arquitetura, tratamento de estados de exceção, lógica de autenticação e controle de acessos devem permanecer sob rigorosa autoria e validação humana. Além disso, o desenvolvedor deve evitar a simples cópia de blocos extensos de código gerados (\"copy-paste completo\"), preferindo a aceitação incremental e modularizada, onde cada segmento é isolado, testado e refatorado antes de ser acoplado à aplicação.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "A programação em pares com IA otimiza a produtividade em tarefas repetitivas, mas exige rigor para não eliminar o pensamento crítico do desenvolvedor.\n\nDelegar a lógica de negócios ou decisões de segurança para a IA sem supervisão contínua introduz falhas estruturais graves.\n\nA prática recomendada exige aceitação incremental e modular do código gerado, evitando a inserção direta de grandes blocos sem testes unitários prévios.\n\nO controle do fluxo de execução e a responsabilidade final pela qualidade e resiliência do software continuam sendo exclusivamente do desenvolvedor humano.",
+              "source": "Examine o estudo de Santos et al. (2024), \"Impacts of the Usage of Generative Artificial Intelligence on Software Development Process\", observando a análise das Seções 4.2.2 e 4.2.3 sobre os impactos do Copilot na programação em pares. Em seguida, consulte Malheiros et al. (2024), \"Impact of Generative AI Technologies on Software Development Professionals' Perceptions of Job Security\" para analisar a percepção dos desenvolvedores sobre automação versus intervenção humana."
+            }
+          ]
+        },
+        {
+          "title": "Lição 2 — Engenharia de Prompts para Invocação Segura e Reutilização Modular de Código",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "A forma como uma funcionalidade é solicitada à IA determina se o código resultante nascerá com controles defensivos ou com vulnerabilidades abertas. Prompts genéricos focados apenas na conclusão rápida da tarefa (\"faça uma função de login\") induzem a IA a gerar implementações ingênuas e inseguras. Aplicar a engenharia de prompts voltada à segurança significa introduzir requisitos de proteção e parâmetros de restrição no próprio comando inicial.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "O prompt como especificação",
+              "body": "Na prática diária de codificação assistida por IA, o prompt atua como uma especificação de requisitos em miniatura. Pesquisas sobre o comportamento de programadores mostram que solicitações baseadas em especificações técnicas detalhadas (Specification Prompts) e declarações formais de funções (Function Declaration Prompts) aumentam expressivamente a taxa de código seguro produzido pelos assistentes. Por outro lado, manter diálogos longos reutilizando interações passadas (Model Close) costuma realimentar e amplificar falhas de segurança introduzidas nas respostas anteriores.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Restrições defensivas no prompt",
+              "body": "Uma prática segura de invocação exige que o desenvolvedor incorpore restrições defensivas explícitas ao estruturar o prompt. Em vez de solicitar algoritmos completos de uma só vez, o desenvolvedor deve solicitar pequenas funções auxiliares (Helper Functions) e instruir a IA a utilizar bibliotecas consolidadas e parâmetros imutáveis. Por exemplo, ao requisitar um componente de consulta ao banco de dados, o prompt deve especificar formalmente o uso de consultas parametrizadas (prepared statements) e a validação estrita dos tipos de entrada.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "Prompts genéricos induzem a IA a gerar código vulnerável por preferir o caminho de menor complexidade sintática.\n\nA aplicação de Specification Prompts e Function Declarations orienta o modelo a produzir saídas alinhadas aos padrões de codificação segura.\n\nReutilizar respostas históricas da sessão (Model Close) sem limpeza do contexto pode propagar e consolidar falhas de código.\n\nDividir problemas complexos em prompts menores para funções auxiliares facilita a verificação e o isolamento de componentes seguros.",
+              "source": "Analise o artigo de Perry et al. (2023), \"Do Users Write More Insecure Code with AI Assistants?\", focando na Seção 6.1 (Prompt Language) e na Tabela 5 para compreender a efetividade de Specification Prompts e Function Declarations na mitigação de falhas."
+            }
+          ]
+        },
+        {
+          "title": "Lição 3 — Governança de Dados Sensíveis, Proteção de Segredos e Propriedade Intelectual em LLMs",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "O uso de assistentes de IA baseados em nuvem introduz um vetor crítico de exfiltração de dados que ultrapassa as fronteiras tradicionais da organização. Submeter códigos-fonte proprietários, chaves de API, senhas ou dados pessoais em prompts pode expor ativos estratégicos da empresa ou violar regulamentações de privacidade como a LGPD e o GDPR. A segurança no uso da IA exige governança estrita antes que qualquer informação atravesse a IDE.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Riscos de enviar dados à IA em nuvem",
+              "body": "Ao interagir com assistentes de programação comerciais ou abertos operados em nuvem, os dados enviados nos prompts e no contexto do editor podem ser retidos pelos provedores para telemetria ou para o re-treinamento de novos modelos. Esse fluxo cria o risco de exposição inadvertida de propriedade intelectual, algoritmos proprietários e segredos de negócio. Além disso, a inserção acidental de credenciais administrativas, tokens JWT ou chaves de acesso a bancos de dados em comentários de código pode resultar no vazamento permanente dessas informações para servidores de terceiros.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Higiene de dados e detecção de segredos",
+              "body": "A implementação de uma postura governada de uso de IA envolve estabelecer políticas claras de higiene de dados e adotar ferramentas de proteção. Em primeiro lugar, os desenvolvedores devem utilizar mecanismos de varredura de segredos (secrets detection tools) na própria IDE para impedir que chaves de API e credenciais sejam passadas no contexto dos prompts.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Serviços empresariais e conformidade",
+              "body": "Em segundo lugar, as organizações devem optar por serviços empresariais que garantam contratualmente a não retenção de dados e a não utilização dos trechos submetidos para treino de modelos. Por fim, é essencial alinhar o uso da IA às diretrizes de conformidade jurídica (Compliance as Code), assegurando a proteção da propriedade intelectual e o respeito às licenças de código aberto.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "O envio de prompts para assistentes em nuvem pode expor códigos proprietários e dados confidenciais a provedores de terceiros.\n\nA inserção acidental de senhas e chaves de API no contexto da IDE resulta em sérios riscos de vazamento de credenciais.\n\nFerramentas automatizadas de detecção de segredos devem bloquear o envio de informações sensíveis nos prompts em tempo real.\n\nA governança corporativa deve exigir termos contratuais de privacidade e conformidade de licenças antes de liberar assistentes de IA na esteira.",
+              "source": "Estude o trabalho de George et al. (2025), \"Bridging the Security Skills Gap\", especificamente a Seção 3.4.3 (Generative AI Security) e as diretrizes da Seção 7.1 sobre proteção de propriedade intelectual e privacidade de dados em assistentes de IA."
+            }
+          ]
+        },
+        {
+          "title": "Lição 4 — Integração do Código Gerado na Esteira CI/CD e Portões de Qualidade (Quality Gates) DevSecOps",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Tratar o código gerado por IA como \"pronto para produção\" apenas porque ele compila e passa em testes funcionais básicos é um erro fatal. Em uma esteira moderna de DevSecOps, o código sintetizado por modelos estocásticos precisa ser submetido às mesmas verificações automatizadas rigorosas aplicadas ao código humano, estabelecendo portões de qualidade (Quality Gates) imutáveis no pipeline de integração contínua.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Quality Gates na esteira CI/CD",
+              "body": "O princípio de Shift-Left prega que a verificação de segurança deve ser movida para as fases mais precoces do Ciclo de Vida de Desenvolvimento de Software (SDLC). Quando se utiliza IA na codificação, esse princípio torna-se ainda mais vital devido ao não-determinismo das LLMs, que podem introduzir falhas sutis de lógica e de dependências. A integração do código de IA ao repositório central deve ser condicionada à aprovação em portões de qualidade automatizados configurados na esteira CI/CD.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Camadas do pipeline de validação",
+              "body": "A arquitetura desse pipeline de validação organiza-se em camadas sequenciais de testes automatizados:",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "SAST: varredura estática",
+              "body": "Varredura Estática de Segurança (SAST): Ferramentas como SonarQube e Checkmarx analisam o código-fonte assim que o commit é realizado, identificando violações de padrões seguros, estouro de buffers e injeções de código.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "SCA: análise de dependências",
+              "body": "Análise de Composição de Software (SCA): Ferramentas de SCA escaneiam as dependências e bibliotecas sugeridas pela IA para detectar componentes desatualizados ou com vulnerabilidades registradas (CVEs).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "IaC: infraestrutura como código",
+              "body": "Análise de Infraestrutura como Código (IaC): Validação de scripts de configuração (ex: Terraform, Dockerfiles) gerados por IA para evitar a implantação de contêineres com permissões excessivas ou portas desprotegidas.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "DAST: testes dinâmicos",
+              "body": "Testes Dinâmicos (DAST): Execução de testes automatizados no ambiente de staging para simular ataques em tempo de execução.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Bloqueio de implantação",
+              "body": "Nenhum código gerado por IA deve avançar para a implantação se falhar em qualquer um desses portões automatizados de segurança.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "O código sintetizado por IA deve passar obrigatoriamente por validação automatizada na esteira CI/CD antes de qualquer mesclagem.\n\nFerramentas de SAST identificam falhas mecânicas de código e padrões inseguros introduzidos inadvertidamente pelos modelos.\n\nFerramentas de SCA garantem que bibliotecas e dependências recomendadas pela IA estejam livres de vulnerabilidades conhecidas (CVEs).\n\nOs portões de qualidade (Quality Gates) aplicam o princípio de Shift-Left, impedindo que códigos inseguros gerados por IA cheguem aos ambientes de produção.",
+              "source": "Consulte Singh (2019), \"Shifting Security Left: Integrating DevSecOps into Agile Software Development Lifecycles\", lendo a Seção 3.3 (Integration of Security in CI/CD Pipelines). Em seguida, leia Voruganti (2021) para examinar a automação de controles no pipeline DevSecOps."
+            }
+          ]
+        },
+        {
+          "title": "Lição 5 — Modelagem de Ameaças Assistida por IA (AI-Assisted Threat Modeling) e Segurança como Código",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "A Inteligência Artificial não serve apenas para gerar código de aplicação; ela pode ser uma aliada poderosa na fase de arquitetura para antecipar vetores de ataque e automatizar a criação de controles de segurança. No entanto, utilizar a IA para modelagem de ameaças exige supervisionar rigorosamente as recomendações emitidas, garantindo que os cenários de risco propostos reflitam a realidade operacional do sistema.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Modelagem de ameaças com IA",
+              "body": "A Modelagem de Ameaças (Threat Modeling) é uma atividade preventiva essencial realizada nas fases iniciais do design do software. Tradicionalmente, esse processo consome bastante tempo e exige reuniões extensas entre arquitetos e especialistas de segurança. Com o surgimento da IA Generativa, os desenvolvedores podem utilizar LLMs para analisar diagramas de arquitetura, contratos de API e especificações funcionais, solicitando à IA a identificação prévia de vetores de ataque baseados no modelo STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Security as Code e revisão humana",
+              "body": "Além da identificação de riscos, a IA pode ser utilizada para acelerar a escrita de Segurança como Código (Security as Code), gerando políticas de controle de acesso, regras de firewall, arquivos de configuração para API Gateways e checklists de segurança personalizados para a aplicação. Contudo, como a IA não possui contexto profundo sobre os ativos críticos do negócio, todas as recomendações e regras de segurança geradas por ela devem passar por revisão e validação formal por parte da equipe humana antes de serem efetivadas na infraestrutura.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "A IA pode ser aplicada na fase de design para automatizar a identificação preliminar de ameaças arquiteturais (modelo STRIDE).\n\nFerramentas de IA auxiliam na escrita de Security as Code, gerando políticas de acesso, regras de tráfego e configurações de segurança.\n\nA modelagem de ameaças assistida por IA economiza tempo e expande a cobertura de riscos nas equipes ágeis.\n\nA validação humana continua sendo obrigatória para priorizar os riscos reais e ajustar os controles de segurança ao contexto do negócio.",
+              "source": "Leia a Seção 3.4.3 (Generative AI Security - AI-assisted threat modeling) do artigo de George et al. (2025). Para consolidar a base teórica da modelagem de ameaças e Security as Code, revise a trilha Princípios de Design Seguro (Lições 1 e 2) e o artigo de Singh (2019)."
+            }
+          ]
+        }
+      ],
+      "revisionExercises": [
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "No pair programming com IA, quais tarefas devem ser delegadas prioritariamente à IA?",
+            "options": [
+              "Decisões de arquitetura do sistema",
+              "Lógica de autenticação e controle de acessos",
+              "Tarefas repetitivas, estruturação de documentação e testes unitários básicos",
+              "Tratamento de estados de exceção"
+            ],
+            "correctAnswer": 2,
+            "explanation": "A IA acelera tarefas repetitivas, a documentação e os testes unitários básicos. Já as decisões que afetam a segurança continuam sob autoria e validação humana."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Qual das decisões abaixo deve permanecer sob rigorosa autoria e validação humana?",
+            "options": [
+              "A formatação dos comentários do código",
+              "A lógica de autenticação e o controle de acessos",
+              "A geração de nomes de variáveis em funções simples",
+              "A escrita de exemplos para a documentação"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Arquitetura, tratamento de exceções, autenticação e controle de acessos são áreas críticas para a segurança e não devem ser delegadas à IA sem validação humana."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: aceitar de uma só vez um bloco extenso de código gerado pela IA (copy-paste completo) é a prática recomendada para ganhar produtividade com segurança.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "O recomendado é a aceitação incremental e modularizada, em que cada segmento é isolado, testado e refatorado antes de ser acoplado à aplicação."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: aceitar fragmentos funcionais sem decomposição modular e sem verificação de segurança é o chamado atalho ______.",
+            "options": [],
+            "correctAnswer": "cognitivo",
+            "explanation": "O atalho cognitivo reduz o engajamento mental do desenvolvedor, justamente o que é necessário para garantir a segurança do código."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem a aceitação incremental de um trecho de código gerado pela IA:",
+            "options": [
+              "Acoplar o trecho à aplicação",
+              "Isolar o segmento sugerido",
+              "Refatorar o segmento, se necessário",
+              "Testar o segmento isolado"
+            ],
+            "correctAnswer": [
+              "Isolar o segmento sugerido",
+              "Testar o segmento isolado",
+              "Refatorar o segmento, se necessário",
+              "Acoplar o trecho à aplicação"
+            ],
+            "explanation": "Cada segmento é isolado, testado e refatorado antes de ser acoplado, o que evita inserir diretamente grandes blocos sem testes prévios."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Na prática diária de codificação assistida por IA, o prompt funciona como o quê?",
+            "options": [
+              "Uma pergunta casual, sem influência sobre a segurança do código",
+              "Uma especificação de requisitos em miniatura",
+              "Um comando que apenas define o tamanho da resposta",
+              "Um substituto da revisão de código"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Como o prompt define o que será produzido, requisitos de segurança incluídos nele aumentam a chance de o código nascer com controles defensivos."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Ao pedir à IA um componente de consulta ao banco de dados, o que o prompt deve especificar?",
+            "options": [
+              "Apenas o nome da tabela, para a IA decidir o restante",
+              "Que a consulta seja a mais curta possível",
+              "O uso de consultas parametrizadas (prepared statements) e a validação estrita dos tipos de entrada",
+              "Que a IA escolha livremente a abordagem mais simples"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Especificar prepared statements e validação de tipos no próprio prompt orienta a IA para uma implementação defensiva, em vez de uma versão ingênua."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: reutilizar respostas históricas da sessão (Model Close) sem limpar o contexto pode propagar e consolidar falhas de código.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Diálogos longos que realimentam respostas anteriores tendem a amplificar as falhas de segurança que já tinham sido introduzidas."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: solicitações baseadas em requisitos técnicos detalhados são chamadas, em inglês, de ______ Prompts.",
+            "options": [],
+            "correctAnswer": "Specification",
+            "explanation": "Os Specification Prompts e os Function Declaration Prompts aumentam expressivamente a taxa de código seguro produzido pelos assistentes."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem uma abordagem modular para pedir uma funcionalidade complexa à IA:",
+            "options": [
+              "Combinar os componentes já verificados",
+              "Pedir uma função auxiliar por vez, com requisitos de segurança explícitos",
+              "Dividir o problema em partes menores",
+              "Verificar e isolar cada componente gerado"
+            ],
+            "correctAnswer": [
+              "Dividir o problema em partes menores",
+              "Pedir uma função auxiliar por vez, com requisitos de segurança explícitos",
+              "Verificar e isolar cada componente gerado",
+              "Combinar os componentes já verificados"
+            ],
+            "explanation": "Dividir o problema em funções auxiliares facilita a verificação e o isolamento de componentes seguros antes de juntá-los."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Por que enviar código e contexto a assistentes de IA em nuvem representa um risco de governança?",
+            "options": [
+              "Porque a IA sempre apaga o código enviado depois de responder",
+              "Porque o código fica mais lento ao ser enviado pela rede",
+              "Porque os provedores podem reter os dados para telemetria ou re-treinamento, expondo propriedade intelectual e segredos de negócio",
+              "Porque a nuvem impede o uso de bibliotecas de código aberto"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Os dados enviados podem ser retidos pelos provedores, o que cria risco de exposição de propriedade intelectual, algoritmos proprietários e segredos de negócio."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Uma pessoa desenvolvedora deixou, em um comentário do código, a chave de acesso ao banco de dados e usa um assistente de IA em nuvem no mesmo arquivo. Qual é o risco?",
+            "options": [
+              "O vazamento permanente dessa credencial para servidores de terceiros",
+              "A chave deixa de funcionar assim que a IA lê o arquivo",
+              "Nenhum, pois comentários nunca são enviados no contexto",
+              "Apenas a lentidão das sugestões da IA"
+            ],
+            "correctAnswer": 0,
+            "explanation": "A inserção acidental de credenciais em comentários ou no contexto do editor pode resultar em vazamento permanente dessas informações para terceiros."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: a organização deve optar por serviços empresariais que garantam, por contrato, a não retenção de dados e a não utilização dos trechos enviados para treino de modelos.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Garantias contratuais de privacidade fazem parte da governança corporativa exigida antes de liberar assistentes de IA na esteira."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: ferramentas de detecção de ______ na IDE impedem que chaves de API e credenciais sejam enviadas nos prompts.",
+            "options": [],
+            "correctAnswer": "segredos",
+            "explanation": "As secrets detection tools bloqueiam em tempo real o envio de informações sensíveis no contexto dos prompts."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem as medidas de uma postura governada de uso de IA:",
+            "options": [
+              "Alinhar o uso da IA à conformidade jurídica e às licenças de código aberto",
+              "Usar varredura de segredos na IDE",
+              "Estabelecer políticas claras de higiene de dados",
+              "Optar por serviços empresariais com não retenção contratual"
+            ],
+            "correctAnswer": [
+              "Estabelecer políticas claras de higiene de dados",
+              "Usar varredura de segredos na IDE",
+              "Optar por serviços empresariais com não retenção contratual",
+              "Alinhar o uso da IA à conformidade jurídica e às licenças de código aberto"
+            ],
+            "explanation": "A governança começa com políticas de higiene de dados, passa por ferramentas de proteção e por contratos de privacidade e termina no alinhamento à conformidade (Compliance as Code)."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Um assistente de IA gerou um Dockerfile que contém a linha abaixo:\n\nUSER root\n\nQual camada do pipeline é indicada para apontar o problema de permissões excessivas do contêiner?",
+            "options": [
+              "SAST, que analisa apenas o código-fonte da aplicação",
+              "SCA, que verifica as dependências",
+              "Análise de Infraestrutura como Código (IaC)",
+              "DAST, que ataca a aplicação em execução"
+            ],
+            "correctAnswer": 2,
+            "explanation": "A análise de IaC valida scripts de configuração, como Terraform e Dockerfiles gerados por IA, evitando a implantação de contêineres com permissões excessivas."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Segundo a lição, quando um código gerado por IA pode avançar para a implantação?",
+            "options": [
+              "Quando compila sem erros",
+              "Quando passa em todos os portões automatizados de segurança",
+              "Quando passa em pelo menos um dos portões",
+              "Quando a própria IA declara que o código é seguro"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Nenhum código gerado por IA deve avançar se falhar em qualquer um dos portões automatizados do pipeline."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: um código gerado por IA que compila e passa em testes funcionais básicos já pode ser considerado pronto para produção.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Isso é um erro. O código gerado por modelos estocásticos precisa passar pelas mesmas verificações automatizadas rigorosas aplicadas ao código humano."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: o DAST executa testes ______ no ambiente de staging, simulando ataques em tempo de execução.",
+            "options": [],
+            "correctAnswer": "dinamicos",
+            "explanation": "O DAST testa a aplicação em execução, enquanto o SAST analisa o código-fonte sem executá-lo."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem as camadas do pipeline de validação do código gerado por IA:",
+            "options": [
+              "Testes dinâmicos (DAST)",
+              "Análise de composição de software (SCA)",
+              "Varredura estática de segurança (SAST)",
+              "Análise de Infraestrutura como Código (IaC)"
+            ],
+            "correctAnswer": [
+              "Varredura estática de segurança (SAST)",
+              "Análise de composição de software (SCA)",
+              "Análise de Infraestrutura como Código (IaC)",
+              "Testes dinâmicos (DAST)"
+            ],
+            "explanation": "O pipeline é organizado em camadas sequenciais: o SAST atua logo após o commit e o DAST fecha o ciclo no ambiente de staging."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Como a IA pode ajudar na modelagem de ameaças?",
+            "options": [
+              "Substituindo a equipe de segurança na decisão final",
+              "Dispensando a necessidade de diagramas de arquitetura",
+              "Garantindo que nenhum vetor de ataque seja esquecido",
+              "Analisando diagramas, contratos de API e especificações para identificar vetores de ataque com base no STRIDE"
+            ],
+            "correctAnswer": 3,
+            "explanation": "A IA pode antecipar vetores de ataque a partir de diagramas e especificações, ampliando a cobertura de riscos, mas sem substituir a equipe."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Por que as recomendações de segurança geradas pela IA precisam de revisão humana?",
+            "options": [
+              "Porque a IA não consegue gerar políticas de controle de acesso",
+              "Porque a IA não possui contexto profundo sobre os ativos críticos do negócio",
+              "Porque revisão humana é exigida apenas em ambientes sem firewall",
+              "Porque o STRIDE só pode ser aplicado por pessoas"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Sem conhecer os ativos críticos do negócio, a IA pode propor riscos e regras que não refletem a realidade do sistema, por isso a validação formal da equipe é obrigatória."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: regras de firewall e políticas de acesso geradas pela IA (Security as Code) podem ser aplicadas direto na infraestrutura, desde que pareçam corretas.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Todas as regras geradas pela IA devem passar por revisão e validação formal da equipe humana antes de serem efetivadas na infraestrutura."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: gerar políticas de acesso, regras de firewall e configurações de API Gateway como arquivos é o que se chama de Security as ______.",
+            "options": [],
+            "correctAnswer": "Code",
+            "explanation": "Em Segurança como Código, os controles viram arquivos versionáveis que a IA pode ajudar a escrever, sempre com validação humana."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem o uso da IA na modelagem de ameaças:",
+            "options": [
+              "Aplicar na infraestrutura os controles validados",
+              "Pedir à IA a identificação de ameaças com o STRIDE",
+              "Revisar e priorizar os riscos reais com a equipe humana",
+              "Fornecer à IA os diagramas e as especificações do sistema"
+            ],
+            "correctAnswer": [
+              "Fornecer à IA os diagramas e as especificações do sistema",
+              "Pedir à IA a identificação de ameaças com o STRIDE",
+              "Revisar e priorizar os riscos reais com a equipe humana",
+              "Aplicar na infraestrutura os controles validados"
+            ],
+            "explanation": "A IA faz a identificação preliminar, mas a priorização dos riscos reais e a validação dos controles ficam com a equipe antes de qualquer aplicação."
+          }
+        ]
+      ],
+      "finalExercises": [
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Marina pediu à IA todo o módulo de login, incluindo o controle de acessos, e colou o resultado inteiro no projeto. Qual seria a prática mais adequada no pair programming com IA?",
+          "options": [
+            "Delegar à IA só tarefas repetitivas e deixar a lógica de autenticação e de acessos sob autoria humana, aceitando o código de forma incremental e testada",
+            "Manter a decisão de colar o bloco, pois a IA é responsável pela qualidade do que gera",
+            "Pedir à IA que revise o próprio código e, se ela confirmar, integrá-lo diretamente",
+            "Evitar qualquer uso de IA em todo o projeto, inclusive em testes e documentação"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A IA deve acelerar tarefas repetitivas, documentação e testes básicos. Autenticação e controle de acessos exigem autoria e validação humana, e a aceitação deve ser incremental, e não um copy-paste completo."
+        },
+        {
+          "questionType": "true_false",
+          "prompt": "Verdadeiro ou falso: mesmo quando o código gerado por IA passa por todas as verificações automatizadas, a responsabilidade final pela qualidade e pela resiliência do software continua sendo do desenvolvedor humano.",
+          "options": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A automação ajuda, mas o controle do fluxo de execução e a responsabilidade pelo resultado permanecem com a pessoa que desenvolve."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Pedro está em uma conversa longa com a IA e vem reaproveitando as respostas anteriores para pedir novos ajustes em uma função que já apresentou falhas. Qual atitude é mais segura?",
+          "options": [
+            "Continuar a conversa, pois a IA tende a corrigir sozinha os erros anteriores",
+            "Pedir a função inteira de uma só vez, sem detalhar requisitos",
+            "Usar a resposta mais recente como base e pedir que ela seja \"melhorada\"",
+            "Recomeçar com um contexto limpo e pedir funções auxiliares menores, com requisitos de segurança explícitos"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reutilizar respostas antigas (Model Close) pode propagar e consolidar falhas. Prompts menores e específicos, com requisitos de segurança, facilitam a verificação."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Uma pessoa desenvolvedora vai pedir ajuda à IA em nuvem e precisa colar um trecho que contém um token de acesso real. Qual é a conduta correta?",
+          "options": [
+            "Colar o token, já que o assistente é uma ferramenta confiável",
+            "Não enviar o token: remover ou substituir o valor real e contar com a detecção de segredos na IDE",
+            "Colar o token e apagar a conversa depois",
+            "Enviar o token apenas se o prompt for curto"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Credenciais não devem atravessar a IDE nos prompts. As ferramentas de detecção de segredos ajudam a impedir isso, e o valor real deve ser substituído por um de exemplo."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "O Terraform gerado por IA para uma equipe deixa uma porta do servidor aberta para qualquer origem. Qual camada do pipeline é a indicada para apontar esse problema?",
+          "options": [
+            "A análise de Infraestrutura como Código (IaC)",
+            "A SCA, que verifica as dependências",
+            "O SAST, que só analisa código-fonte da aplicação",
+            "Nenhuma, pois scripts de configuração não precisam ser verificados"
+          ],
+          "correctAnswer": 0,
+          "explanation": "A análise de IaC valida os scripts de configuração gerados por IA, como Terraform e Dockerfiles, para evitar permissões excessivas e portas desprotegidas."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Uma equipe pediu à IA uma lista de ameaças pelo STRIDE e regras de firewall prontas, e pretende aplicá-las direto na infraestrutura. O que deve ser feito antes?",
+          "options": [
+            "Nada, pois a IA já considerou o contexto do negócio",
+            "Substituir a modelagem de ameaças pela lista da IA",
+            "Submeter as recomendações à revisão e validação formal da equipe, que conhece os ativos críticos do negócio",
+            "Aplicar apenas as regras e ignorar a lista de ameaças"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A IA não tem contexto profundo sobre os ativos críticos do negócio. Por isso suas recomendações precisam de validação humana antes de serem efetivadas."
+        },
+        {
+          "questionType": "fill_in_the_blank",
+          "prompt": "Complete: a varredura ______ (SAST) analisa o código-fonte logo após o commit, sem executar a aplicação.",
+          "options": [],
+          "correctAnswer": "estatica",
+          "explanation": "O SAST identifica padrões inseguros no código, e o DAST complementa testando a aplicação em execução no ambiente de staging."
+        },
+        {
+          "questionType": "true_false",
+          "prompt": "Verdadeiro ou falso: se a organização usa um serviço empresarial com garantia contratual de não retenção de dados, a detecção de segredos na IDE deixa de ser necessária.",
+          "options": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "correctAnswer": 1,
+          "explanation": "As medidas se complementam: o contrato reduz o risco de retenção pelo provedor, e a detecção de segredos evita que credenciais sejam enviadas nos prompts."
+        },
+        {
+          "questionType": "ordering",
+          "prompt": "Coloque em ordem o caminho seguro de uma funcionalidade pedida à IA até a implantação:",
+          "options": [
+            "Passar o código pelos portões do pipeline (SAST, SCA e IaC)",
+            "Validar em staging com testes dinâmicos (DAST) antes de implantar",
+            "Dividir o problema e pedir funções pequenas, com requisitos de segurança",
+            "Revisar e testar cada trecho de forma incremental"
+          ],
+          "correctAnswer": [
+            "Dividir o problema e pedir funções pequenas, com requisitos de segurança",
+            "Revisar e testar cada trecho de forma incremental",
+            "Passar o código pelos portões do pipeline (SAST, SCA e IaC)",
+            "Validar em staging com testes dinâmicos (DAST) antes de implantar"
+          ],
+          "explanation": "Começa-se por prompts defensivos e modulares, aceita-se o código de forma incremental, passa-se pelos portões automatizados e só então se valida em staging antes da implantação."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Qual dos pedidos abaixo à IA em nuvem é o mais adequado quanto à segurança do código e à proteção de dados?",
+          "options": [
+            "\"Faça a consulta de pedidos usando esta senha real do banco: ...\"",
+            "\"Faça o que for mais rápido para consultar pedidos.\"",
+            "\"Cole aqui o código inteiro do meu sistema e me diga o que melhorar.\"",
+            "\"Escreva consultar_pedido(id) com prepared statements e validação do tipo da entrada, usando um valor fictício no lugar de qualquer credencial.\""
+          ],
+          "correctAnswer": 3,
+          "explanation": "O melhor pedido combina requisitos de segurança explícitos no prompt (Lição 2) com cuidado em não expor credenciais nem código proprietário (Lição 3)."
+        }
+      ]
+    },
+    {
+      "theme": "Revisão de Artefatos Gerados por IA",
+      "description": "Desenvolva uma abordagem crítica para avaliar, testar e integrar com segurança código gerado por IA.",
+      "lessons": [
+        {
+          "title": "Lição 1 — O Paradigma do Desenvolvedor-Supervisor: Do Copy-Paste à Análise Crítica",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Acelerar a escrita de código com assistentes de Inteligência Artificial Generativa traz a falsa sensação de que a engenharia de software se tornou simples. No entanto, aceitar sugestões de código sem entender exatamente o que há por baixo do capô é o equivalente a instalar uma peça mecânica desconhecida no motor de um avião em pleno voo. O maior risco de segurança não reside na máquina que gera a sugestão, mas na postura passiva do desenvolvedor que confia cegamente no resultado fornecido.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Do código escrito ao copy-paste",
+              "body": "Com a popularização de assistentes de codificação baseados em Large Language Models (LLMs), como o GitHub Copilot e o ChatGPT, o processo de desenvolvimento de software passou por uma transformação profunda. De forma tradicional, a formação do desenvolvedor esteve focada na sintaxe da linguagem e na construção manual de algoritmos. Contudo, o uso massivo dessas ferramentas propagou a prática de copiar e colar trechos de código e funções inteiras sem uma inspeção minuciosa sobre a sua segurança técnica.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Dunning-Kruger e excesso de confiança",
+              "body": "Essa dependência cega gera o Efeito Dunning-Kruger (viés cognitivo em que pessoas com baixo conhecimento superestimam suas próprias habilidades) em estudantes e profissionais. Pesquisas empíricas revelam que desenvolvedores que utilizam assistentes de IA tendem a produzir código significativamente menos seguro do que aqueles que trabalham sem assistência. Mais grave ainda, esses mesmos desenvolvedores demonstram uma confiança excessiva no produto final, acreditando genuinamente que escreveram um código seguro quando, na verdade, introduziram falhas críticas de implementação.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "O desenvolvedor como supervisor",
+              "body": "Diante dessa realidade, o papel do desenvolvedor de software precisa evoluir. O profissional deixa de atuar primariamente como um \"escritor de código\" para assumir a função de supervisor e revisor crítico dos artefatos gerados por IA. Essa mudança exige desenvolver uma mentalidade de \"inspeção minuciosa\" e adquirir novas competências técnicas para auditagem de segurança, avaliação de riscos de propriedade intelectual e validação rigorosa antes de qualquer integração ao repositório principal.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "A IA generativa altera o papel do desenvolvedor de criador direto para supervisor e auditor crítico de código.\n\nO uso de assistentes de IA pode gerar um excesso de confiança e uma falsa percepção de segurança no código produzido.\n\nCopiar e colar sugestões sem revisão detalhada propaga vulnerabilidades conhecidas no software.\n\nA validação humana contínua é o único pilar capaz de garantir que a produtividade da IA não comprometa a segurança da aplicação.",
+              "source": "Leia o artigo de Perry et al. (2023), \"Do Users Write More Insecure Code with AI Assistants?\", focando na Seção 5 (Trust Analysis), para compreender a relação entre o uso da IA e o excesso de confiança dos desenvolvedores. Em seguida, leia Santos et al. (2024), \"Impacts of the Usage of Generative Artificial Intelligence on Software Development Process\", abordando a redefinição dos papéis no processo de software."
+            }
+          ]
+        },
+        {
+          "title": "Lição 2 — Natureza Estocástica e a Anatomia das Vulnerabilidades Geradas por IA",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Diferente de um compilador ou de um algoritmo tradicional, uma Inteligência Artificial não possui um raciocínio lógico determinístico. Ela trabalha com probabilidades estatísticas aprendidas a partir de grandes volumes de texto e código-fonte. Tratar a IA como uma fonte infalível é ignorar o fato de que ela foi treinada tanto com códigos exemplares quanto com os piores erros de segurança já publicados na internet.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Herança de padrões inseguros",
+              "body": "Os Large Language Models (LLMs) que alimentam os assistentes de código são treinados em vastos repositórios públicos, incluindo códigos contendo padrões inseguros de programação. Como consequência, a probabilidade estatística faz com que os modelos reproduzam e sintetizem esses mesmos padrões vulneráveis.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Estudo de Pearce et al. (2022)",
+              "body": "Um estudo sistemático conduzido por Pearce et al. (2022) investigou a prevalência de vulnerabilidades em mais de 1.600 programas gerados pelo GitHub Copilot em cenários baseados na lista MITRE Top 25 Common Weakness Enumeration (CWE). Os resultados demonstraram que aproximadamente 40% dos códigos gerados pela IA eram vulneráveis a falhas graves, tais como Injeção de SQL (CWE-89), Path Traversal (CWE-22) e Estouro de Buffer (Buffer Overflow - CWE-787).",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Natureza estocástica da IA",
+              "body": "Além da alta taxa de vulnerabilidades, destaca-se a natureza estocástica (não determinística) das ferramentas de IA generativa. Um mesmo prompt enviado ao assistente pode gerar uma resposta perfeitamente segura em uma execução e uma solução criticamente vulnerável na tentativa seguinte. Essa variação significa que o fato de uma ferramenta ter gerado código seguro no passado não garante a segurança da próxima sugestão, tornando indispensável a análise individual de cada trecho produzido.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "Modelos de IA são treinados em repositórios abertos e herdam padrões inseguros de codificação.\n\nEstudos apontam que aproximadamente 40% do código gerado por assistentes de IA contém vulnerabilidades de segurança do Top 25 CWE.\n\nAs falhas geradas incluem injeções SQL, erros de manipulação de memória, atalhos de autenticação e vazamento de dados.\n\nDevido ao caráter estocástico da IA, os resultados não são determinísticos, exigindo auditoria linha por linha.",
+              "source": "Leia o estudo seminal de Pearce et al. (2022), \"Asleep at the Keyboard? Assessing the Security of GitHub Copilot’s Code Contributions\", concentrando-se nas Seções 4 e 5 para examinar as taxas de ocorrência do Top 25 CWE em C e Python."
+            }
+          ]
+        },
+        {
+          "title": "Lição 3 — Alucinações, Prolixidade e as Armadilhas de Validação (Falsos Positivos e Negativos)",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "Quando um assistente de IA comete um erro, ele não o faz de maneira hesitante. Pelo contrário: as ferramentas generativas são projetadas para fornecer respostas articuladas e convincentes, muitas vezes inventando bibliotecas que não existem ou garantindo que um código inseguro é totalmente imune a ataques. Saber identificar essa \"autoconfiança artificial\" é o primeiro passo para não cair em suas armadilhas.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Alucinações",
+              "body": "A avaliação de assistentes de programação envolve enfrentar desafios específicos de usabilidade e confiabilidade. O primeiro grande obstáculo é o fenômeno das alucinações. Ocorre uma alucinação quando a IA gera informações falsas com uma explicação técnica plausível e tom convincente. Por exemplo, em testes de validação no trabalho de Silva (2024), assistentes de IA chegaram a afirmar categoricamente que determinada função sanitizava entradas contra ataques XSS em qualquer capitalização quando, na verdade, a implementação lógica era falha e ineficaz.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Prolixidade e falta de objetividade",
+              "body": "O segundo obstáculo é a prolixidade e a falta de objetividade. Diferente das ferramentas tradicionais de Análise Estática (SAST), que fornecem alertas diretos sobre a linha vulnerável, as LLMs tendem a gerar longas explicações discursivas. Essa verbosidade frequentemente oculta a real falha de segurança em meio a recomendações genéricas ou introduz falsos positivos secundários que distraem o desenvolvedor.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Falsos positivos e falsos negativos",
+              "body": "Por fim, a auditoria manual de código gerado por IA deve lidar com Falsos Negativos (quando a IA afirma que um código vulnerável está seguro) e Falsos Positivos (quando a IA aponta falhas inexistentes em código seguro). As altas incidências desses dois erros geram investigação desnecessária de alarmes no primeiro caso e uma perigosa sensação de segurança no segundo.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "Alucinações ocorrem quando a IA gera justificativas técnicas falsas para explicar um código incorreto.\n\nA prolixidade das LLMs dificulta a identificação rápida de vulnerabilidades reais e gera poluição visual.\n\nFalsos Negativos emitidos pela IA induzem o desenvolvedor a publicar códigos vulneráveis sem perceber.\n\nO desenvolvedor não deve aceitar as explicações de segurança da IA sem validar as premissas em documentações oficiais (ex: SEI CERT, CWE).",
+              "source": "Leia o estudo de Silva et al. (2024), \"Análise comparativa de IAs generativas como ferramentas de apoio à programação segura\", analisando os Casos Exemplo 1, 2 e 3 na Seção 4 para visualizar instâncias reais de alucinações e prolixidade em assistentes como Copilot, CodeWhisperer e Codium."
+            }
+          ]
+        },
+        {
+          "title": "Lição 4 — Engenharia de Prompts Defensiva e Ajuste de Parâmetros de Segurança",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "A forma como você pergunta à Inteligência Artificial determina a qualidade da resposta que vai receber. Um comando vago ou mal estruturado fará com que o assistente escolha o caminho de menor resistência, que em ocasiões raras é o mais seguro. Dominar a engenharia de prompts e configurar os parâmetros do modelo são habilidades essenciais para forçar a IA a priorizar a segurança do código.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "O prompt como técnica instrucional",
+              "body": "A interação com assistentes de código não deve ser vista como uma simples conversa em linguagem natural, mas como uma técnica instrucional que molda o comportamento do modelo. Pesquisas sobre o uso de assistentes mostram que a qualidade do prompt reduz drasticamente a taxa de códigos vulneráveis.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Estratégias de prompt (Perry et al.)",
+              "body": "Perry et al. (2023) categorizaram as estratégias de prompts utilizadas por desenvolvedores e identificaram quais resultam em código mais seguro:",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Estratégia: Declaração de Função",
+              "body": "Declaração de Função (Function Declaration): Fornecer a assinatura exata da função e a estrutura esperada orienta a IA dentro de limites restritos de código.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Estratégia: Especificação",
+              "body": "Especificação (Specification): Definir claramente os requisitos de segurança na instrução (ex: \"escreva uma função que autentique a mensagem e utilize prepared statements\"), em vez de apenas pedir uma funcionalidade genérica.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Estratégia: Funções Auxiliares",
+              "body": "Funções Auxiliares (Helper Functions): Pedir para a IA focar na construção de pequenas rotinas isoladas facilita a auditoria manual.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Model Close: o ciclo perigoso",
+              "body": "Ciclo de Reutilização Perigoso (Model Close): Reutilizar as respostas anteriores da IA como prompts subsequentes é um padrão perigoso, pois tende a amplificar e replicar as falhas inicialmente geradas pelo modelo.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Temperatura do modelo",
+              "body": "Outro fator determinante é o controle de parâmetros do modelo, como a Temperatura (Temperature). A temperatura controla o grau de \"diversidade\" ou aleatoriedade das saídas. Desenvolvedores que ajustam ativamente a temperatura para explorar variações e inserem instruções explícitas de segurança nos prompts conseguem extrair soluções significativamente mais seguras e corretas da ferramenta.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "Prompts detalhados com especificações explícitas de segurança geram código consideravelmente mais seguro.\n\nIncluir declarações de função e exigir o uso de rotinas seguras previne sugestões vulneráveis por padrão.\n\nReutilizar respostas antigas do modelo como prompt pode propagar e magnificar falhas de código.\n\nO ajuste consciente de parâmetros como a Temperature permite explorar alternativas mais robustas de implementação.",
+              "source": "Leia a Seção 6 (Prompt Analysis) do artigo de Perry et al. (2023), examinando as Figuras 4 e 5 para compreender como diferentes formatos de prompt afetam o percentual de respostas seguras aceitas pelos usuários."
+            }
+          ]
+        },
+        {
+          "title": "Lição 5 — Protocolo de Auditoria e Integração do Código Gerado no Ciclo DevSecOps",
+          "slides": [
+            {
+              "tag": "Por que isso importa",
+              "title": "Por que isso importa",
+              "body": "O código gerado por uma Inteligência Artificial deve ser tratado com a mesma desconfiança que o código escrito por qualquer fonte externa não verificada. Inserir a IA no processo de desenvolvimento exige criar um filtro rigoroso para garantir que nenhum artefato automatizado chegue à produção sem passar pelos portões de segurança do DevSecOps.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Zero Trust e a esteira DevSecOps",
+              "body": "Para usufruir dos ganhos de produtividade da Inteligência Artificial sem comprometer a segurança da aplicação, as organizações precisam integrar o uso de IA às práticas de Shift-Left e DevSecOps. A premissa central é o princípio do Zero Trust (Confiança Zero) em relação a qualquer artefato sintetizado por ferramentas generativas.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Protocolo de auditoria em camadas",
+              "body": "Um protocolo eficaz de auditoria de código gerado por IA deve seguir um fluxo em camadas:",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Camada 1: contexto e intenção",
+              "body": "Análise de Contexto e Intenção: Antes de aceitar a sugestão, o desenvolvedor deve ler o código linha por linha, verificando se ele atende à lógica de negócios e se não introduz dependências inseguras ou desnecessárias.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Camada 2: SAST",
+              "body": "Varredura Estática Automatizada (SAST): Todo código gerado por IA deve obrigatoriamente passar por ferramentas de análise estática (como CodeQL ou SonarQube) integradas à esteira CI/CD. A análise estática serve como um filtro mecânico para capturar falhas conhecidas do Top 25 CWE que o olho humano pode deixar passar.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Camada 3: SCA",
+              "body": "Análise de Composição de Software (SCA): Verificar se as bibliotecas e pacotes sugeridos pela IA existem, estão atualizados e não possuem vulnerabilidades conhecidas (CVEs) ou problemas de licenciamento e propriedade intelectual.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Camada 4: DAST/IAST",
+              "body": "Testes Dinâmicos e Interativos (DAST/IAST): Executar testes automatizados no ambiente de homologação para garantir que a aplicação se comporta com segurança em tempo de execução.",
+              "source": null
+            },
+            {
+              "tag": "Conteúdo",
+              "title": "Governança de dados e prompts",
+              "body": "Além do código em si, aspectos de governança são fundamentais: desenvolvedores devem ser orientados sobre os riscos de vazar dados sensíveis, credenciais de acesso ou propriedade intelectual da empresa ao enviar prompts para ferramentas de IA operadas em nuvem.",
+              "source": null
+            },
+            {
+              "tag": "Resumo",
+              "title": "Resumo",
+              "body": "Todo código gerado por IA deve ser submetido ao princípio de Zero Trust no pipeline DevSecOps.\n\nA auditoria manual realizada pelo desenvolvedor é a primeira camada indispensável de defesa.\n\nFerramentas SAST e SCA devem ser executadas automaticamente sobre o código de IA para identificar falhas mecânicas e dependências vulneráveis.\n\nCuidados de governança são necessários para evitar o vazamento de dados sensíveis e propriedade intelectual em prompts de IA.",
+              "source": "Estude o artigo de Voruganti (2021), \"Implementing Security by Design practice with DevSecOps Shift Left Approach\", para entender a arquitetura do pipeline automatizado de DevSecOps. Em seguida, leia a Seção 3.4.3 (Generative AI Security) do trabalho de George et al. (2025) sobre governança e verificação de código assistida por IA."
+            }
+          ]
+        }
+      ],
+      "revisionExercises": [
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Com o uso de assistentes de IA generativa, qual papel o desenvolvedor passa a assumir principalmente?",
+            "options": [
+              "Escritor exclusivo de cada linha de código, sem apoio de ferramentas",
+              "Operador que apenas aprova tudo o que a IA sugere para ganhar velocidade",
+              "Supervisor e revisor crítico dos artefatos gerados pela IA",
+              "Testador, sem responsabilidade sobre a segurança do que foi gerado"
+            ],
+            "correctAnswer": 2,
+            "explanation": "O profissional deixa de atuar principalmente como \"escritor de código\" e passa a ser supervisor e revisor crítico, com mentalidade de inspeção minuciosa antes de integrar qualquer artefato ao repositório principal."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O que o Efeito Dunning-Kruger descreve, segundo a lição?",
+            "options": [
+              "Um viés em que pessoas com baixo conhecimento superestimam suas próprias habilidades",
+              "Um ataque que faz a IA gerar código vulnerável de propósito",
+              "A tendência de a IA errar mais quando o prompt é muito longo",
+              "A perda de desempenho de um sistema quando muitos usuários o acessam"
+            ],
+            "correctAnswer": 0,
+            "explanation": "Esse viés cognitivo ajuda a explicar por que desenvolvedores que usam IA podem acreditar que escreveram um código seguro quando, na verdade, introduziram falhas críticas."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: pesquisas indicam que desenvolvedores que usam assistentes de IA tendem a produzir código mais seguro, por isso podem confiar mais no resultado final.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "É o contrário: eles tendem a produzir código significativamente menos seguro e ainda demonstram confiança excessiva no produto final."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: a prática de aceitar sugestões da IA sem inspeção é conhecida como copiar e ______ trechos de código.",
+            "options": [],
+            "correctAnswer": "colar",
+            "explanation": "Copiar e colar sugestões sem revisão detalhada propaga vulnerabilidades conhecidas para dentro do software."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem o fluxo de um desenvolvedor-supervisor ao receber uma sugestão de código da IA:",
+            "options": [
+              "Avaliar riscos de segurança e de propriedade intelectual",
+              "Validar o código antes de integrá-lo ao repositório principal",
+              "Receber a sugestão de código da IA",
+              "Ler e entender o código linha por linha"
+            ],
+            "correctAnswer": [
+              "Receber a sugestão de código da IA",
+              "Ler e entender o código linha por linha",
+              "Avaliar riscos de segurança e de propriedade intelectual",
+              "Validar o código antes de integrá-lo ao repositório principal"
+            ],
+            "explanation": "O supervisor não cola o resultado direto: primeiro entende o que foi gerado, depois avalia os riscos e só então valida a integração ao repositório principal."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "No estudo de Pearce et al. (2022) sobre programas gerados pelo GitHub Copilot, qual foi aproximadamente a parcela de códigos vulneráveis a falhas graves?",
+            "options": [
+              "Cerca de 4%",
+              "Cerca de 15%",
+              "Cerca de 90%",
+              "Cerca de 40%"
+            ],
+            "correctAnswer": 3,
+            "explanation": "O estudo analisou mais de 1.600 programas em cenários do MITRE Top 25 CWE e encontrou cerca de 40% de códigos vulneráveis, incluindo injeção de SQL, Path Traversal e estouro de buffer."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Um assistente de IA sugeriu a linha abaixo para buscar um usuário pelo nome:\n\nconsulta = \"SELECT * FROM usuarios WHERE nome = '\" + nome + \"'\"\n\nQual falha da lista Top 25 CWE esse padrão pode representar?",
+            "options": [
+              "Path Traversal (CWE-22)",
+              "Estouro de buffer (CWE-787)",
+              "Negação de serviço",
+              "Injeção de SQL (CWE-89)"
+            ],
+            "correctAnswer": 3,
+            "explanation": "O valor de nome é concatenado direto na consulta, permitindo que uma entrada maliciosa altere o comando SQL. Por isso a sugestão da IA precisa ser revisada, e não apenas copiada."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: se o assistente de IA gerou código seguro para um prompt hoje, o mesmo prompt amanhã terá a segurança garantida.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "A IA generativa é estocástica (não determinística): o mesmo prompt pode gerar uma solução segura numa execução e uma criticamente vulnerável na seguinte."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: por poder gerar respostas diferentes para um mesmo prompt, dizemos que a IA generativa tem natureza ______ (não determinística).",
+            "options": [],
+            "correctAnswer": "estocastica",
+            "explanation": "A natureza estocástica faz com que o resultado passado não garanta a segurança da próxima sugestão, o que torna indispensável analisar cada trecho produzido."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem a cadeia que leva uma IA a sugerir código vulnerável:",
+            "options": [
+              "A IA reproduz o padrão inseguro em uma sugestão",
+              "O modelo aprende estatisticamente os padrões, inclusive os inseguros",
+              "A IA é treinada em repositórios públicos que contêm código inseguro",
+              "Uma auditoria identifica a falha antes da integração"
+            ],
+            "correctAnswer": [
+              "A IA é treinada em repositórios públicos que contêm código inseguro",
+              "O modelo aprende estatisticamente os padrões, inclusive os inseguros",
+              "A IA reproduz o padrão inseguro em uma sugestão",
+              "Uma auditoria identifica a falha antes da integração"
+            ],
+            "explanation": "Os modelos são treinados em repositórios públicos que incluem código inseguro e, por probabilidade estatística, podem reproduzir esses padrões. A auditoria é o que impede que a falha chegue ao produto."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "O que é uma alucinação de uma IA generativa, no contexto de código?",
+            "options": [
+              "Um erro de compilação causado por uma biblioteca desatualizada",
+              "Uma informação falsa apresentada com explicação técnica plausível e tom convincente",
+              "Uma resposta muito curta, que não explica nada sobre o código",
+              "Um alerta correto de vulnerabilidade, mas fora de contexto"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Na alucinação, a IA pode, por exemplo, inventar uma biblioteca inexistente ou afirmar que uma função é imune a ataques quando a implementação é falha, sempre com tom de segurança."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Por que a prolixidade das LLMs é um problema na revisão de segurança?",
+            "options": [
+              "Porque respostas longas sempre consomem mais memória do servidor",
+              "Porque ela impede que o código gerado seja compilado",
+              "Porque as explicações longas podem esconder a falha real em meio a recomendações genéricas",
+              "Porque ferramentas SAST ficam impedidas de analisar o código"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Diferente da análise estática, que aponta direto a linha vulnerável, a IA tende a produzir longas explicações que escondem a falha real ou distraem com falsos positivos secundários."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: um falso negativo ocorre quando a IA aponta uma falha que não existe em um código seguro.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Isso descreve um falso positivo. No falso negativo, a IA afirma que um código vulnerável está seguro, o que gera uma perigosa sensação de segurança."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: quando a IA aponta uma falha que não existe em um código seguro, ocorre um falso ______.",
+            "options": [],
+            "correctAnswer": "positivo",
+            "explanation": "O falso positivo gera investigação desnecessária de alarmes. Já o falso negativo faz o desenvolvedor publicar código vulnerável sem perceber."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem os passos para lidar com uma afirmação de segurança feita pela IA:",
+            "options": [
+              "Decidir se aceita o código ou se o corrige",
+              "Conferir as premissas em documentação oficial, como CWE ou SEI CERT",
+              "Identificar em quais premissas a afirmação se baseia",
+              "Ler a afirmação de segurança feita pela IA"
+            ],
+            "correctAnswer": [
+              "Ler a afirmação de segurança feita pela IA",
+              "Identificar em quais premissas a afirmação se baseia",
+              "Conferir as premissas em documentação oficial, como CWE ou SEI CERT",
+              "Decidir se aceita o código ou se o corrige"
+            ],
+            "explanation": "A explicação da IA não deve ser aceita sem validar suas premissas em fontes oficiais; só depois dessa conferência o desenvolvedor decide o que fazer com o código."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Qual dos prompts abaixo segue a estratégia de Especificação, definindo requisitos de segurança?",
+            "options": [
+              "Faça uma função de login.",
+              "Escreva o código de login mais rápido possível.",
+              "Faça algo parecido com o código que você gerou antes.",
+              "Escreva uma função de login que use prepared statements e armazene a senha com hash."
+            ],
+            "correctAnswer": 3,
+            "explanation": "Na Especificação, os requisitos de segurança entram na própria instrução, em vez de pedir apenas uma funcionalidade genérica, o que orienta a IA para uma solução mais segura."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Por que reutilizar respostas anteriores da IA como prompts seguintes é considerado um padrão perigoso (Model Close)?",
+            "options": [
+              "Porque faz a IA perder o acesso ao histórico da conversa",
+              "Porque aumenta o custo de cada requisição",
+              "Porque tende a replicar e amplificar as falhas geradas inicialmente pelo modelo",
+              "Porque impede o ajuste da temperatura"
+            ],
+            "correctAnswer": 2,
+            "explanation": "Quando a resposta da IA vira a base do próximo prompt, uma falha inicial passa a ser tratada como ponto de partida e tende a ser propagada e ampliada."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: a temperatura (Temperature) é o parâmetro que controla o grau de diversidade ou aleatoriedade das saídas do modelo.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 0,
+            "explanation": "A temperatura regula a variação das respostas. Ajustá-la com consciência, junto de instruções explícitas de segurança, ajuda a explorar soluções mais seguras e corretas."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: pedir à IA pequenas rotinas isoladas, chamadas funções ______, facilita a auditoria manual do código.",
+            "options": [],
+            "correctAnswer": "auxiliares",
+            "explanation": "As funções auxiliares (Helper Functions) são pequenas e isoladas, o que torna a revisão humana mais simples e mais confiável."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem um uso defensivo de prompts ao pedir uma função segura:",
+            "options": [
+              "Refinar o prompt com novas instruções, em vez de reaproveitar a resposta anterior",
+              "Especificar os requisitos de segurança no prompt",
+              "Gerar a sugestão e auditá-la manualmente",
+              "Definir a assinatura (declaração) da função esperada"
+            ],
+            "correctAnswer": [
+              "Definir a assinatura (declaração) da função esperada",
+              "Especificar os requisitos de segurança no prompt",
+              "Gerar a sugestão e auditá-la manualmente",
+              "Refinar o prompt com novas instruções, em vez de reaproveitar a resposta anterior"
+            ],
+            "explanation": "Primeiro se delimita a função (Function Declaration), depois se detalham os requisitos de segurança (Specification), a saída é auditada e, se preciso, o prompt é refinado sem cair no ciclo do Model Close."
+          }
+        ],
+        [
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Qual princípio é a premissa central do protocolo de auditoria de código gerado por IA?",
+            "options": [
+              "Confiar no código da IA quando ele compila sem erros",
+              "Zero Trust (Confiança Zero) em relação a qualquer artefato gerado",
+              "Aceitar o código da IA desde que a ferramenta seja bem avaliada",
+              "Revisar apenas o código que a IA marcar como arriscado"
+            ],
+            "correctAnswer": 1,
+            "explanation": "Todo artefato gerado por IA deve ser tratado com a mesma desconfiança de código externo não verificado, passando pelos portões de segurança do DevSecOps antes de chegar à produção."
+          },
+          {
+            "questionType": "multiple_choice",
+            "prompt": "Qual é o objetivo da Análise de Composição de Software (SCA) no protocolo?",
+            "options": [
+              "Medir a velocidade de resposta da aplicação sob carga",
+              "Revisar o estilo e a formatação do código gerado",
+              "Executar a aplicação em homologação para simular ataques",
+              "Verificar se as bibliotecas sugeridas existem, estão atualizadas e não têm vulnerabilidades conhecidas (CVEs)"
+            ],
+            "correctAnswer": 3,
+            "explanation": "A SCA confere os pacotes sugeridos pela IA, o que inclui checar se existem de fato, se estão atualizados e se não trazem CVEs ou problemas de licenciamento."
+          },
+          {
+            "questionType": "true_false",
+            "prompt": "Verdadeiro ou falso: se o código gerado por IA passou na varredura estática (SAST), não é mais necessário revisá-lo linha por linha.",
+            "options": [
+              "Verdadeiro",
+              "Falso"
+            ],
+            "correctAnswer": 1,
+            "explanation": "A auditoria manual é a primeira camada indispensável. A SAST complementa, capturando falhas conhecidas do Top 25 CWE que o olho humano pode deixar passar, mas não a substitui."
+          },
+          {
+            "questionType": "fill_in_the_blank",
+            "prompt": "Complete: ao enviar prompts para IAs em nuvem, o desenvolvedor deve evitar vazar dados sensíveis, propriedade intelectual e ______ de acesso.",
+            "options": [],
+            "correctAnswer": "credenciais",
+            "explanation": "A governança exige orientar os desenvolvedores sobre o risco de expor dados sensíveis, credenciais de acesso ou propriedade intelectual da empresa nos prompts."
+          },
+          {
+            "questionType": "ordering",
+            "prompt": "Coloque em ordem as camadas do protocolo de auditoria de código gerado por IA:",
+            "options": [
+              "Testes dinâmicos e interativos (DAST/IAST)",
+              "Varredura estática automatizada (SAST)",
+              "Análise de composição de software (SCA)",
+              "Análise de contexto e intenção (leitura linha por linha)"
+            ],
+            "correctAnswer": [
+              "Análise de contexto e intenção (leitura linha por linha)",
+              "Varredura estática automatizada (SAST)",
+              "Análise de composição de software (SCA)",
+              "Testes dinâmicos e interativos (DAST/IAST)"
+            ],
+            "explanation": "O fluxo em camadas começa com a leitura humana, passa pelas varreduras automatizadas de código (SAST) e de dependências (SCA) e termina com os testes em execução no ambiente de homologação."
+          }
+        ]
+      ],
+      "finalExercises": [
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Ana pediu a uma IA uma função de upload de arquivos, colou o resultado direto no projeto e está convicta de que o código é seguro, sem tê-lo lido. Qual é o principal problema dessa postura?",
+          "options": [
+            "Ela deveria ter escrito a função manualmente, pois a IA nunca gera código útil",
+            "Ela assumiu o papel de supervisor, mas só deveria atuar como escritora de código",
+            "O problema é apenas de estilo, já que a IA costuma gerar código seguro",
+            "Ela confia cegamente no resultado em vez de inspecioná-lo criticamente, o que gera falsa sensação de segurança"
+          ],
+          "correctAnswer": 3,
+          "explanation": "O maior risco não está na máquina, e sim na postura passiva do desenvolvedor. O correto é atuar como supervisor e revisor crítico, lendo e validando o código antes de integrá-lo."
+        },
+        {
+          "questionType": "true_false",
+          "prompt": "Verdadeiro ou falso: como a IA generativa é estocástica, revisar o código de uma única resposta já garante a segurança de todas as respostas futuras para o mesmo prompt.",
+          "options": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A revisão vale apenas para o trecho analisado. Uma nova execução do mesmo prompt pode produzir um código bem diferente e vulnerável, então cada sugestão precisa ser analisada individualmente."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Um assistente de IA sugeriu a linha abaixo para abrir um relatório escolhido pelo usuário:\n\narquivo = abrir(\"/dados/relatorios/\" + nome_informado_pelo_usuario)\n\nQual falha da lista Top 25 CWE ela pode representar?",
+          "options": [
+            "Injeção de SQL (CWE-89)",
+            "Estouro de buffer (CWE-787)",
+            "Path Traversal (CWE-22)",
+            "Negação de serviço"
+          ],
+          "correctAnswer": 2,
+          "explanation": "O nome informado pelo usuário é concatenado ao caminho sem controle, o que permite acessar arquivos fora da pasta prevista. Essa é uma das falhas que Pearce et al. encontraram em códigos gerados por IA."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "A IA afirmou, com explicação detalhada e tom confiante, que uma função sanitiza entradas contra XSS em qualquer capitalização. Na prática, a implementação é falha. Como esse caso se classifica?",
+          "options": [
+            "Um falso positivo, pois a IA apontou uma falha que não existe",
+            "Uma alucinação que resulta em falso negativo, pois a IA declarou seguro um código vulnerável",
+            "Prolixidade apenas, pois o problema é o tamanho da resposta",
+            "Um comportamento correto, já que o tom confiante indica que a análise é confiável"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A IA gerou uma justificativa técnica plausível, porém falsa (alucinação), e declarou seguro um código vulnerável (falso negativo). Por isso as premissas devem ser validadas em documentação oficial."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Carlos pediu uma função de cadastro, recebeu um código com falhas e, em seguida, colou a resposta da IA como novo prompt com a instrução \"melhore isso\". Qual risco essa prática traz?",
+          "options": [
+            "Reduz a temperatura do modelo e deixa as respostas repetitivas",
+            "Impede que a IA responda novamente na mesma conversa",
+            "Substitui a necessidade de auditar o código gerado",
+            "Tende a replicar e amplificar as falhas já geradas pelo modelo (Model Close)"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Usar a resposta anterior como base do próximo prompt propaga as falhas iniciais. O mais seguro é refinar o prompt com requisitos explícitos de segurança."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Uma equipe só roda a análise estática (SAST) no código gerado por IA antes de publicá-lo. Qual das opções descreve melhor o que ainda falta no protocolo?",
+          "options": [
+            "Remover a análise estática, pois ela atrapalha a produtividade",
+            "Enviar todo o código para a IA conferir sozinha",
+            "A leitura crítica do desenvolvedor, a verificação das dependências (SCA) e os testes dinâmicos (DAST/IAST)",
+            "Nada, pois a SAST sozinha cobre todas as camadas do protocolo"
+          ],
+          "correctAnswer": 2,
+          "explanation": "O protocolo é em camadas: leitura linha por linha, SAST, SCA e testes dinâmicos. Nenhuma ferramenta isolada substitui as demais."
+        },
+        {
+          "questionType": "fill_in_the_blank",
+          "prompt": "Complete: o protocolo de auditoria adota o princípio de Confiança Zero, que em inglês é chamado de ______ Trust.",
+          "options": [],
+          "correctAnswer": "Zero",
+          "explanation": "Zero Trust significa tratar todo artefato gerado por IA com a mesma desconfiança de um código externo não verificado, até que ele passe pelos portões de segurança do DevSecOps."
+        },
+        {
+          "questionType": "true_false",
+          "prompt": "Verdadeiro ou falso: se o prompt já inclui requisitos explícitos de segurança, não é mais necessário auditar o código gerado.",
+          "options": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Um bom prompt reduz a taxa de código vulnerável, mas não a elimina. A auditoria manual e as varreduras automatizadas continuam sendo necessárias."
+        },
+        {
+          "questionType": "ordering",
+          "prompt": "Coloque em ordem o ciclo seguro de uso de IA para gerar uma função:",
+          "options": [
+            "Executar SAST e SCA no pipeline",
+            "Escrever o prompt com requisitos de segurança",
+            "Testar a aplicação em homologação (DAST/IAST)",
+            "Revisar a sugestão linha por linha"
+          ],
+          "correctAnswer": [
+            "Escrever o prompt com requisitos de segurança",
+            "Revisar a sugestão linha por linha",
+            "Executar SAST e SCA no pipeline",
+            "Testar a aplicação em homologação (DAST/IAST)"
+          ],
+          "explanation": "Tudo começa com um prompt defensivo, seguido da revisão humana, das varreduras automatizadas e, por fim, dos testes em execução no ambiente de homologação."
+        },
+        {
+          "questionType": "multiple_choice",
+          "prompt": "Ao revisar um relatório de análise feito por IA, um desenvolvedor percebe que ela apontou uma falha inexistente em um trecho seguro e deixou passar uma injeção de SQL em outro trecho. Quais erros a IA cometeu?",
+          "options": [
+            "Dois falsos negativos",
+            "Dois falsos positivos",
+            "Um falso negativo e depois um falso positivo",
+            "Um falso positivo e um falso negativo"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Apontar falha inexistente é um falso positivo, e deixar uma vulnerabilidade passar como se estivesse segura é um falso negativo. Por isso o supervisor não pode aceitar o relatório sem validar."
+        }
+      ]
+    }
+  ]
+}

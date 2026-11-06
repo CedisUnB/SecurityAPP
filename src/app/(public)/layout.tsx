@@ -8,7 +8,7 @@ export default async function PublicLayout({
 }) {
   const session = await getSession();
   if (session) {
-    redirect("/dashboard");
+    redirect("/tracks");
   }
 
   return <>{children}</>;

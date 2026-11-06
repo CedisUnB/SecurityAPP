@@ -8,7 +8,8 @@ const createJestConfig = nextJest({
 const baseConfig: Config = {
   coverageProvider: 'v8',
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/$1',
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@generated/(.*)$': '<rootDir>/generated/$1',
   },
   testMatch: [
     '**/__tests__/**/*.[jt]s?(x)',
@@ -27,7 +28,7 @@ export default async function jestConfig(): Promise<Config> {
         ...nextConfig,
         displayName: 'unit',
         testEnvironment: 'jsdom',
-        roots: ['<rootDir>/app'],
+        roots: ['<rootDir>/src/app', '<rootDir>/src'],
         testPathIgnorePatterns: ['./tests/e2e', './tests/integration'],
       },
       {
@@ -35,6 +36,7 @@ export default async function jestConfig(): Promise<Config> {
         displayName: 'integration',
         testEnvironment: 'node',
         roots: ['<rootDir>/tests/integration'],
+        setupFiles: ['dotenv/config'],
         testPathIgnorePatterns: ['./tests/e2e'],
       },
     ],

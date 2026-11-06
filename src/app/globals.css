@@ -1,1 +1,153 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-brand-primary: #1e3a8a;
+  --color-brand-secondary: #38bdf8;
+  --color-confirm: #059669;
+  --color-cancel: #c72a37;
+  --color-alert: #d97706;
+  --color-alert-foreground: #451a03;
+
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-hover: var(--surface-hover);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-overlay: var(--overlay);
+
+  --color-lesson-border: var(--lesson-border);
+  --color-lesson-surface: var(--lesson-surface);
+  --color-lesson-foreground: var(--lesson-foreground);
+  --color-exercise-border: var(--exercise-border);
+  --color-exercise-surface: var(--exercise-surface);
+  --color-exercise-foreground: var(--exercise-foreground);
+
+  --color-accent-border: var(--accent-border);
+
+  --color-current-border: var(--current-border);
+  --color-current-surface: var(--current-surface);
+  --color-current-foreground: var(--current-foreground);
+
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-border: var(--hero-border);
+
+   --font-default: var(--font-montserrat), Arial, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+  --surface: #f3f4f6;
+  --surface-alt: #b6c0d3;
+  --surface-hover: #e2e8f0;
+  --foreground: #121625;
+  --foreground-muted: #475569;
+  --border: #cbd5e1;
+  --accent: #1e3a8a;
+  --accent-foreground: #ffffff;
+  --overlay: rgb(18 22 37 / 0.72);
+
+  --lesson-border: #7dd3fc;
+  --lesson-surface: #f0f9ff;
+  --lesson-foreground: #0c4a6e;
+  --exercise-border: #6ee7b7;
+  --exercise-surface: #ecfdf5;
+  --exercise-foreground: #064e3b;
+
+  --accent-border: #1e293b;
+
+  --current-border: #a855f7;
+  --current-surface: #f5f3ff;
+  --current-foreground: #581c87;
+
+  --hero-foreground: #ffffff;
+  --hero-muted: #dbeafe;
+  --hero-border: rgb(255 255 255 / 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #121625;
+    --surface-alt: #192038;
+    --surface-hover: #26324a;
+    --foreground: #f3f4f6;
+    --foreground-muted: #b6c0d3;
+    --border: #475569;
+    --accent: #38bdf8;
+    --accent-foreground: #121625;
+    --overlay: rgb(0 0 0 / 0.72);
+
+    --lesson-border: #0369a1;
+    --lesson-surface: #0c2a3d;
+    --lesson-foreground: #bae6fd;
+    --exercise-border: #047857;
+    --exercise-surface: #022c22;
+    --exercise-foreground: #a7f3d0;
+
+    --accent-border: #0ea5e9;
+
+    --current-border: #a855f7;
+    --current-surface: #2e1065;
+    --current-foreground: #e9d5ff;
+
+    --hero-foreground: #f3f4f6;
+    --hero-muted: #b6c0d3;
+    --hero-border: rgb(243 244 246 / 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #121625;
+  --surface-alt: #192038;
+  --surface-hover: #26324a;
+  --foreground: #f3f4f6;
+  --foreground-muted: #b6c0d3;
+  --border: #475569;
+  --accent: #38bdf8;
+  --accent-foreground: #121625;
+  --overlay: rgb(0 0 0 / 0.72);
+
+  --lesson-border: #0369a1;
+  --lesson-surface: #0c2a3d;
+  --lesson-foreground: #bae6fd;
+  --exercise-border: #047857;
+  --exercise-surface: #022c22;
+  --exercise-foreground: #a7f3d0;
+
+  --accent-border: #0ea5e9;
+
+  --current-border: #a855f7;
+  --current-surface: #2e1065;
+  --current-foreground: #e9d5ff;
+
+  --hero-foreground: #f3f4f6;
+  --hero-muted: #b6c0d3;
+  --hero-border: rgb(243 244 246 / 0.6);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+body {
+  font-family: var(--font-default);
+  background-color: var(--surface);
+  color: var(--color-foreground);
+}
+
+.field-error {
+  display: none;
+}
+
+input:user-invalid ~ .field-error {
+  display: block;
+}

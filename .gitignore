@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+.vscode
+
 # dependencies
 /node_modules
 /.pnp
@@ -34,6 +36,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env
+.env.production
 
 # vercel
 .vercel
@@ -43,3 +46,11 @@ yarn-error.log*
 next-env.d.ts
 
 /generated/prisma
+/generated
+.github/skills
+
+# python virtual environment
+/.venv-docs
+
+#mkdocs
+/docs-site/site

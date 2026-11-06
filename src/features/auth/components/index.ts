@@ -1,2 +1,4 @@
 export * from "./SignUpForm";
-export * from "./LoginForm";
+export * from "./SignInForm";
+export * from "./ProfileCard";
+export * from "./DeleteAccountModal"
